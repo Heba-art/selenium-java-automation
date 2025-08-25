@@ -1,51 +1,57 @@
-# 🚀 Selenium Java Automation Project  
+# Selenium Automation Project – SauceDemo
 
-This is a **Test Automation Framework** built with **Java, Selenium, TestNG, and Maven**.  
-It follows the **Page Object Model (POM)** design pattern and integrates with **Allure Reports** for reporting.  
-
----
-
-## 📂 Project Structure
-
-selenium-java-automation
-┣ src
-┃ ┣ main/java # Page Objects, utilities, base classes
-┃ ┗ test/java # Test cases using TestNG
-┣ pom.xml # Maven dependencies
-┣ testng.xml # TestNG suite configuration
-┣ allure-results # Allure test execution results (auto-generated)
-┗ target # Build output (auto-generated)
+## 📌 Overview
+This project is a Selenium Test Automation framework built for **SauceDemo** site.  
+It includes **login functionality tests** and **cart functionality tests**, following **Page Object Model (POM)** design.
 
 ---
 
-## 🛠️ Tools & Technologies
-- **Java 11+**
-- **Selenium WebDriver**
-- **TestNG**
-- **Maven**
-- **Allure Reports**
+## ✅ Work Done
+- Implemented **Login tests**:
+  - Valid login (success)
+  - Invalid login (wrong password)
+  - Locked out user
+- Implemented **Cart test**:
+  - Add single item to cart
+  - Remove item from cart
+- Created **TestCases.md** file:
+  - Contains all test cases in table format
+  - Includes steps, expected results, and actual results
 
 ---
 
-### How to Run Tests
+## 🛠️ Tech Stack
+- **Java**  
+- **Selenium WebDriver**  
+- **TestNG**  
+- **Maven**  
+- **Allure Reports (planned)**  
 
-1. Clone this repository:  
-   `git clone https://github.com/Heba-art/selenium-java-automation.git`
-
-2. Navigate to project folder:  
-   `cd selenium-java-automation`
-
-3. Run tests with Maven:  
-   `mvn clean test`
-
-4. Generate Allure report:  
-   `mvn allure:serve`
-
-
-
-📌 Notes
-
-Make sure Java 11+ and Maven are installed and configured in your system PATH.
-
-Allure must be installed to view reports locally
+## ▶️ How to Run
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/YourUsername/selenium-automation-project.git
    
+---
+## ▶️Project Structure 
+
+```markdown
+```text
+src
+ ├── main/java
+ │   └── com.mycompany.selenium_automation_project
+ │         ├── LoginPage.java
+ │         ├── ProductsPage.java
+ │         └── CartPage.java
+ ├── test/java
+ │   └── com.mycompany.selenium_automation_project.tests
+ │         ├── SauceDemoLoginValidTest.java
+ │         ├── SauceDemoLoginInvalidTest.java
+ │         ├── SauceDemoLoginLockedOutTest.java
+ │         └── SauceDemoAddToCartTest.java
+TestCases.md
+README.md
+pom.xml
+testng.xml
+---
+
