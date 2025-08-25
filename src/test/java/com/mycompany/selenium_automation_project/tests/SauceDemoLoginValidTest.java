@@ -1,6 +1,7 @@
 package com.mycompany.selenium_automation_project.tests;
 
 import org.testng.Assert;
+
 import org.testng.annotations.Test;
 
 import com.mycompany.selenium_automation_project.LoginPage;

@@ -27,14 +27,21 @@ selenium-java-automation
 
 ---
 
-## ▶️ How to Run Tests
-1. Clone this repository:
-   ```bash git clone https://github.com/Heba-art/selenium-java-automation.git
-2. Navigate to project folder: cd selenium-java-automation
+### How to Run Tests
 
-3.Run tests with Maven: mvn clean test
+1. Clone this repository:  
+   `git clone https://github.com/Heba-art/selenium-java-automation.git`
 
-4.Generate Allure report mvn allure:serve
+2. Navigate to project folder:  
+   `cd selenium-java-automation`
+
+3. Run tests with Maven:  
+   `mvn clean test`
+
+4. Generate Allure report:  
+   `mvn allure:serve`
+
+
 
 📌 Notes
 
