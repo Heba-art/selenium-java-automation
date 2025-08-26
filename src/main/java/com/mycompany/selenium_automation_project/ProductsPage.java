@@ -24,7 +24,7 @@ public class ProductsPage {
     }
     public String getCartBadgeText() {
         try {
-            return driver.findElement(cartBadge).getText().trim();
+          return driver.findElement(cartBadge).getText().trim();
         } catch (NoSuchElementException e) {
             return null;
         }
@@ -58,11 +58,9 @@ public class ProductsPage {
         if (!driver.findElements(removeBtn).isEmpty()) {
             return; // already in cart
         }
-
         // Otherwise add it
         WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(addBtn));
         btn.click();
-
         // Make sure the button is turned to "Remove"
         wait.until(ExpectedConditions.presenceOfElementLocated(removeBtn));
     }

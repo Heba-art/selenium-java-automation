@@ -41,13 +41,15 @@ public class CartPage {
         return !driver.findElements(cartItemRowByName(name)).isEmpty();
     }
  
+ // CartPage.java (snippet)
     public void removeProductFromCart(String productName) {
+        // Row locator: full cart row that contains the product name
         By rowLocator = cartItemRowByName(productName);
 
-        // 1) Pick up the class before removal.
+        // 1) Get the row before removal
         WebElement row = wait.until(ExpectedConditions.visibilityOfElementLocated(rowLocator));
 
-        // 2) Remove button within the same row
+        // 2) Find the "Remove" button inside the same row (robust selectors)
         WebElement removeBtn;
         try {
             removeBtn = row.findElement(By.cssSelector("button.cart_button"));
@@ -55,24 +57,21 @@ public class CartPage {
             removeBtn = row.findElement(By.xpath(".//button[contains(@id,'remove') or contains(@data-test,'remove') or normalize-space()='Remove']"));
         }
 
-        // 3) Click (with JS fallback if an object occurs)
+        // 3) Click it (use JS as a fallback if intercepted)
         try {
             wait.until(ExpectedConditions.elementToBeClickable(removeBtn)).click();
         } catch (ElementClickInterceptedException ex) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", removeBtn);
         }
 
-        // 4) Wait for one of the following conditions to occur:
-     // - The element has become stale
-     // - The element has disappeared (invisible)
-     // - The number of rows that match the catches has become 0 (or less than before)
+        // 4) Post-click verification: wait until the row is gone/hidden or the count decreases
         int before = driver.findElements(rowLocator).size();
         wait.until(ExpectedConditions.or(
                 ExpectedConditions.stalenessOf(row),
                 ExpectedConditions.invisibilityOfElementLocated(rowLocator),
                 ExpectedConditions.numberOfElementsToBe(rowLocator, Math.max(0, before - 1))
         ));
-      }
+    }
 
 }
 

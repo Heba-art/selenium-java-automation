@@ -39,8 +39,7 @@ public class SauceDemoAddToCartTest extends BaseTest {
 	    Assert.assertEquals(products.getCartBadgeText(), "1", "Cart badge should be 1 after adding one item.");
 
 	    // 5) Open cart and verify item exists
-	    products.openCart();
-	    CartPage cart = new CartPage(driver, wait);
+	    CartPage cart = products.openCart();
 	    wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("title"), "Your Cart"));
 	    Assert.assertTrue(cart.isProductInCart(product), "Cart should contain '" + product + "'.");
 	}
@@ -57,16 +56,16 @@ public class SauceDemoAddToCartTest extends BaseTest {
         // 2. Go to products page and add one item
         ProductsPage products = new ProductsPage(driver);
         products.waitUntilLoaded();
-        products.addProductToCart(product); // This is the robust version we created
+        products.addProductToCart(product); 
         Assert.assertEquals(products.getCartBadgeText(), "1", "Precondition failed");
 
         // 3. Open the cart page
         CartPage cart = products.openCart();
-        Assert.assertTrue(cart.isProductInCart("Sauce Labs Backpack"), "Precondition failed");
-        cart.removeProductFromCart("Sauce Labs Backpack");
+        Assert.assertTrue(cart.isProductInCart(product), "Precondition failed");
+        cart.removeProductFromCart(product);
 
         // Verify
-        Assert.assertFalse(cart.isProductInCart("Sauce Labs Backpack"), "Item should be removed from cart");
+        Assert.assertFalse(cart.isProductInCart(product), "Item should be removed from cart");
         products.waitForBadgeToDisappear();
         String badge = products.getCartBadgeText();
         Assert.assertTrue(badge == null || badge.isEmpty(), "Cart badge should be empty after removal");
