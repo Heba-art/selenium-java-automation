@@ -28,7 +28,7 @@ public class SauceDemoAddToCartTest extends BaseTest {
 	    Assert.assertTrue(products.isLoaded(), "Products page should be loaded after login.");
 
 	    // 3) Add item (robust add with waits/scroll)
-	    products.addToCart(product);
+	    products.addProductToCart(product);
 	    By removeBtn = By.id("remove-sauce-labs-backpack");
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(removeBtn));
 
@@ -49,8 +49,7 @@ public class SauceDemoAddToCartTest extends BaseTest {
     public void removeItemFromCart_shouldEmptyCartAndHideBadge() {
         final String product = "Sauce Labs Backpack";
 
-        // --- Precondition: One item already in cart ---
-        // 1. Login to the application
+        // 1. Login
         LoginPage login = new LoginPage(driver);
         login.open(baseUrl);
         login.login("standard_user", "secret_sauce");
@@ -58,15 +57,20 @@ public class SauceDemoAddToCartTest extends BaseTest {
         // 2. Go to products page and add one item
         ProductsPage products = new ProductsPage(driver);
         products.waitUntilLoaded();
-        products.addToCart(product); // This is the robust version we created
-        Assert.assertEquals(products.getCartBadgeText(), "1", "Precondition failed: Cart badge should be 1.");
+        products.addProductToCart(product); // This is the robust version we created
+        Assert.assertEquals(products.getCartBadgeText(), "1", "Precondition failed");
 
         // 3. Open the cart page
         CartPage cart = products.openCart();
-        Assert.assertTrue(cart.isLoaded(),"Cart page did not load successfully.");
-        Assert.assertTrue(cart.isProductInCart(product),"Expected product was not found in the cart.");
-        cart.removeProductFromCart(product);
-        Assert.assertFalse(cart.isProductInCart(product),"Product was not removed from the cart.");
+        Assert.assertTrue(cart.isProductInCart("Sauce Labs Backpack"), "Precondition failed");
+        cart.removeProductFromCart("Sauce Labs Backpack");
+
+        // Verify
+        Assert.assertFalse(cart.isProductInCart("Sauce Labs Backpack"), "Item should be removed from cart");
+        products.waitForBadgeToDisappear();
+        String badge = products.getCartBadgeText();
+        Assert.assertTrue(badge == null || badge.isEmpty(), "Cart badge should be empty after removal");
+
 
 	
 	}

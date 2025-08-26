@@ -18,35 +18,10 @@ public class ProductsPage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
-
     public void waitUntilLoaded() {
         wait.until(ExpectedConditions.urlContains("/inventory.html"));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(headerTitle, "Products"));
     }
-    
-    private By addButtonByProductName(String name) {
-        String key = name.toLowerCase().replace(" ", "-");
-        return By.cssSelector("button[data-test='add-to-cart-" + key + "']");
-        // return By.id("add-to-cart-" + key);
-    }
-
-    public void addToCart(String productName) {
-        waitUntilLoaded();
-        By locator = addButtonByProductName(productName);
-        WebElement btn = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        // scroll To the item (if below)
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
-        // wait for clickable
-        btn = wait.until(ExpectedConditions.elementToBeClickable(locator));
-
-        try {
-            btn.click();
-        } catch (ElementClickInterceptedException e) {
-            // fallback: JS click 
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
-        }
-    }
-
     public String getCartBadgeText() {
         try {
             return driver.findElement(cartBadge).getText().trim();
@@ -54,7 +29,6 @@ public class ProductsPage {
             return null;
         }
     }
-
     public CartPage openCart() {
         wait.until(ExpectedConditions.elementToBeClickable(cartIcon)).click();
         CartPage cart = new CartPage(driver,wait);

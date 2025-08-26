@@ -36,9 +36,7 @@ public class CartPage {
     private By cartItemRowByName(String name) {
         return By.xpath("//div[@class='cart_item' and .//div[@class='inventory_item_name' and normalize-space()='" + name + "']]");
     }
-	// public boolean hasItem(String name) {
-	//	 return isProductInCart(name);
-	// }
+	
     public boolean isProductInCart(String name) {
         return !driver.findElements(cartItemRowByName(name)).isEmpty();
     }
@@ -57,7 +55,7 @@ public class CartPage {
             removeBtn = row.findElement(By.xpath(".//button[contains(@id,'remove') or contains(@data-test,'remove') or normalize-space()='Remove']"));
         }
 
-        // 3) اClick (with JS fallback if an object occurs)
+        // 3) Click (with JS fallback if an object occurs)
         try {
             wait.until(ExpectedConditions.elementToBeClickable(removeBtn)).click();
         } catch (ElementClickInterceptedException ex) {
