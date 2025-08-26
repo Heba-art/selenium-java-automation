@@ -12,8 +12,8 @@ import com.mycompany.selenium_automation_project.ProductsPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
 public class SauceDemoAddToCartTest extends BaseTest {
-
-	@Test //Test Case4
+	//Test Case4
+	@Test 
 	public void addSingleItemToCart_shouldShowBadgeAndItemInCart() {
 	    final String product = "Sauce Labs Backpack";
 
@@ -44,7 +44,8 @@ public class SauceDemoAddToCartTest extends BaseTest {
 	    wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("title"), "Your Cart"));
 	    Assert.assertTrue(cart.isProductInCart(product), "Cart should contain '" + product + "'.");
 	}
-	@Test //Test Case4
+	//Test Case5
+	@Test 
     public void removeItemFromCart_shouldEmptyCartAndHideBadge() {
         final String product = "Sauce Labs Backpack";
 
@@ -62,10 +63,10 @@ public class SauceDemoAddToCartTest extends BaseTest {
 
         // 3. Open the cart page
         CartPage cart = products.openCart();
-        Assert.assertTrue(cart.isLoaded());
-        Assert.assertTrue(cart.isProductInCart(product));
+        Assert.assertTrue(cart.isLoaded(),"Cart page did not load successfully.");
+        Assert.assertTrue(cart.isProductInCart(product),"Expected product was not found in the cart.");
         cart.removeProductFromCart(product);
-        Assert.assertFalse(cart.isProductInCart(product));
+        Assert.assertFalse(cart.isProductInCart(product),"Product was not removed from the cart.");
 
 	
 	}

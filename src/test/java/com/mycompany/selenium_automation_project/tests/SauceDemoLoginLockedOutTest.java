@@ -10,7 +10,7 @@ import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
 public class SauceDemoLoginLockedOutTest extends BaseTest {
-	
+	//Test Case3
 	@Test
     public void loginWithLockedOutUser_shouldShowLockedOutError() {
 	LoginPage loginPage = new LoginPage(driver);

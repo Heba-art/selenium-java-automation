@@ -34,15 +34,15 @@ public class ProductsPage {
         waitUntilLoaded();
         By locator = addButtonByProductName(productName);
         WebElement btn = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        // scroll إلى العنصر (لو تحت)
+        // scroll To the item (if below)
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
-        // انتظر قابلية الضغط
+        // wait for clickable
         btn = wait.until(ExpectedConditions.elementToBeClickable(locator));
 
         try {
             btn.click();
         } catch (ElementClickInterceptedException e) {
-            // fallback: JS click لو حصل اعتراض
+            // fallback: JS click 
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
         }
     }
@@ -80,16 +80,16 @@ public class ProductsPage {
         By addBtn    = By.cssSelector("button[data-test='add-to-cart-" + slug + "']");
         By removeBtn = By.cssSelector("button[data-test='remove-"     + slug + "']");
 
-        // إذا كان مُضافًا بالفعل، لا تحاولي إضافته ثانية
+        // If it is already added, do not try to add it again.
         if (!driver.findElements(removeBtn).isEmpty()) {
             return; // already in cart
         }
 
-        // وإلا أضيفيه
+        // Otherwise add it
         WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(addBtn));
         btn.click();
 
-        // تحقق أن الزر أصبح "Remove"
+        // Make sure the button is turned to "Remove"
         wait.until(ExpectedConditions.presenceOfElementLocated(removeBtn));
     }
 

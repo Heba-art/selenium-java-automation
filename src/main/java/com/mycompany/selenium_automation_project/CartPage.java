@@ -32,12 +32,10 @@ public class CartPage {
     	return driver.findElement(title).getText().trim().equalsIgnoreCase("Your Cart");	
     }
     
- // صف العربة الذي يحتوي على اسم المنتج المطلوب
+ // The cart description that contains the desired product name
     private By cartItemRowByName(String name) {
         return By.xpath("//div[@class='cart_item' and .//div[@class='inventory_item_name' and normalize-space()='" + name + "']]");
     }
-
-	    
 	// public boolean hasItem(String name) {
 	//	 return isProductInCart(name);
 	// }
@@ -48,10 +46,10 @@ public class CartPage {
     public void removeProductFromCart(String productName) {
         By rowLocator = cartItemRowByName(productName);
 
-        // 1) التقط الصف قبل الإزالة
+        // 1) Pick up the class before removal.
         WebElement row = wait.until(ExpectedConditions.visibilityOfElementLocated(rowLocator));
 
-        // 2) زر الإزالة داخل نفس الصف
+        // 2) Remove button within the same row
         WebElement removeBtn;
         try {
             removeBtn = row.findElement(By.cssSelector("button.cart_button"));
@@ -59,27 +57,26 @@ public class CartPage {
             removeBtn = row.findElement(By.xpath(".//button[contains(@id,'remove') or contains(@data-test,'remove') or normalize-space()='Remove']"));
         }
 
-        // 3) انقر (مع fallback لـ JS لو حصل اعتراض)
+        // 3) اClick (with JS fallback if an object occurs)
         try {
             wait.until(ExpectedConditions.elementToBeClickable(removeBtn)).click();
         } catch (ElementClickInterceptedException ex) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", removeBtn);
         }
 
-        // 4) انتظر تحقق أي من الحالات التالية:
-        //    - العنصر أصبح stale
-        //    - العنصر اختفى (invisible)
-        //    - عدد الصفوف التي تطابق اللواقط أصبح 0 (أو أقل من السابق)
+        // 4) Wait for one of the following conditions to occur:
+     // - The element has become stale
+     // - The element has disappeared (invisible)
+     // - The number of rows that match the catches has become 0 (or less than before)
         int before = driver.findElements(rowLocator).size();
         wait.until(ExpectedConditions.or(
                 ExpectedConditions.stalenessOf(row),
                 ExpectedConditions.invisibilityOfElementLocated(rowLocator),
                 ExpectedConditions.numberOfElementsToBe(rowLocator, Math.max(0, before - 1))
         ));
-    }
+      }
 
-
-	 }
+}
 
  
 

@@ -26,20 +26,20 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
 
         Map<String, Object> prefs = new HashMap<>();
-        prefs.put("credentials_enable_service", false);              // إيقاف خدمة كلمات المرور
-        prefs.put("profile.password_manager_enabled", false);        // إيقاف حفظ كلمات المرور
-        prefs.put("profile.password_manager_leak_detection", false); // إيقاف تحذيرات التسريب
-        prefs.put("autofill.profile_enabled", false);                // إيقاف Autofill
-        prefs.put("autofill.credit_card_enabled", false);            // إيقاف Autofill الكروت
+        prefs.put("credentials_enable_service", false);              //Stop password service
+        prefs.put("profile.password_manager_enabled", false);        // Stop saving passwords
+        prefs.put("profile.password_manager_leak_detection", false); // Stop leak warnings
+        prefs.put("autofill.profile_enabled", false);                // stop Autofill
+        prefs.put("autofill.credit_card_enabled", false);            // stop Autofill cards
         options.setExperimentalOption("prefs", prefs);
 
-        // 2) أعلام إضافية
+        // 2) additional 
         options.addArguments("--disable-save-password-bubble");
         options.addArguments("--disable-notifications");
-        options.addArguments("--incognito");         // اختياري
+        options.addArguments("--incognito");         // optional
         options.addArguments("--start-maximized");
 
-        // 3) إنشاء WebDriver مع الخيارات فقط (مرّة واحدة!)
+        // 3) Create a WebDriver with options only (once!)
         driver = new ChromeDriver(options);
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
