@@ -1,3 +1,4 @@
+
 package com.mycompany.selenium_automation_project.tests;
 
 import org.openqa.selenium.By;
@@ -12,7 +13,7 @@ import com.mycompany.selenium_automation_project.base.BaseTest;
 
 public class SauceDemoAddToCartTest extends BaseTest {
 
-	@Test
+	@Test //Test Case4
 	public void addSingleItemToCart_shouldShowBadgeAndItemInCart() {
 	    final String product = "Sauce Labs Backpack";
 
@@ -39,16 +40,39 @@ public class SauceDemoAddToCartTest extends BaseTest {
 
 	    // 5) Open cart and verify item exists
 	    products.openCart();
-	    CartPage cart = new CartPage(driver);
+	    CartPage cart = new CartPage(driver, wait);
 	    wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("title"), "Your Cart"));
-	    Assert.assertTrue(cart.hasItem(product), "Cart should contain '" + product + "'.");
+	    Assert.assertTrue(cart.isProductInCart(product), "Cart should contain '" + product + "'.");
 	}
+	@Test //Test Case4
+    public void removeItemFromCart_shouldEmptyCartAndHideBadge() {
+        final String product = "Sauce Labs Backpack";
 
+        // --- Precondition: One item already in cart ---
+        // 1. Login to the application
+        LoginPage login = new LoginPage(driver);
+        login.open(baseUrl);
+        login.login("standard_user", "secret_sauce");
 
+        // 2. Go to products page and add one item
+        ProductsPage products = new ProductsPage(driver);
+        products.waitUntilLoaded();
+        products.addToCart(product); // This is the robust version we created
+        Assert.assertEquals(products.getCartBadgeText(), "1", "Precondition failed: Cart badge should be 1.");
+
+        // 3. Open the cart page
+        CartPage cart = products.openCart();
+        Assert.assertTrue(cart.isLoaded());
+        Assert.assertTrue(cart.isProductInCart(product));
+        cart.removeProductFromCart(product);
+        Assert.assertFalse(cart.isProductInCart(product));
+
+	
+	}
+	
 }
 
 
 	
 	
 	
-

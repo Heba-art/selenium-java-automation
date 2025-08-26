@@ -1,3 +1,4 @@
+
 package com.mycompany.selenium_automation_project;
 
 import org.openqa.selenium.*;
@@ -54,10 +55,12 @@ public class ProductsPage {
         }
     }
 
-    public void openCart() {
+    public CartPage openCart() {
         wait.until(ExpectedConditions.elementToBeClickable(cartIcon)).click();
+        CartPage cart = new CartPage(driver,wait);
+        cart.waitUntilLoaded();
+        return cart;
     }
-
     public boolean isLoaded() {
         try {
             return driver.findElement(headerTitle).getText().trim().equalsIgnoreCase("Products");
@@ -65,4 +68,29 @@ public class ProductsPage {
             return false;
         }
     }
+    public void waitForBadgeToDisappear() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(cartBadge));
+    }
+    private String toSlug(String name) {
+        return name.toLowerCase().replace(" ", "-");
+    }
+
+    public void addProductToCart(String productName) {
+        String slug = toSlug(productName);
+        By addBtn    = By.cssSelector("button[data-test='add-to-cart-" + slug + "']");
+        By removeBtn = By.cssSelector("button[data-test='remove-"     + slug + "']");
+
+        // إذا كان مُضافًا بالفعل، لا تحاولي إضافته ثانية
+        if (!driver.findElements(removeBtn).isEmpty()) {
+            return; // already in cart
+        }
+
+        // وإلا أضيفيه
+        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(addBtn));
+        btn.click();
+
+        // تحقق أن الزر أصبح "Remove"
+        wait.until(ExpectedConditions.presenceOfElementLocated(removeBtn));
+    }
+
 }
