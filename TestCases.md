@@ -20,7 +20,7 @@
       <td style="padding: 8px;">High</td>
       <td style="padding: 8px;">Positive</td>
       <td style="padding: 8px;">Browser open on Login page</td>
-      <td style="padding: 8px;">1. Enter username = `standard_user`<br>2. Enter password = `secret_sauce`<br>3. Click Login</td>
+      <td style="padding: 8px;">1. Enter username = <code>standard_user</code><br>2. Enter password = <code>secret_sauce</code><br>3. Click Login</td>
       <td style="padding: 8px;">Redirected to Products page. Header shows "Products".</td>
       <td style="padding: 8px; color: green;">✅ Pass</td>
     </tr>
@@ -31,7 +31,7 @@
       <td style="padding: 8px;">High</td>
       <td style="padding: 8px;">Negative</td>
       <td style="padding: 8px;">Browser open on Login page</td>
-      <td style="padding: 8px;">1. Enter username = `standard_user`<br>2. Enter password = `wrong_pass`<br>3. Click Login</td>
+      <td style="padding: 8px;">1. Enter username = <code>standard_user</code><br>2. Enter password = <code>wrong_pass</code><br>3. Click Login</td>
       <td style="padding: 8px;">Error message displayed: *...Username and password do not match...*</td>
       <td style="padding: 8px; color: green;">✅ Pass</td>
     </tr>
@@ -42,7 +42,7 @@
       <td style="padding: 8px;">High</td>
       <td style="padding: 8px;">Negative</td>
       <td style="padding: 8px;">Browser open on Login page</td>
-      <td style="padding: 8px;">1. Enter username = `locked_out_user`<br>2. Enter password = `secret_sauce`<br>3. Click Login</td>
+      <td style="padding: 8px;">1. Enter username = <code>locked_out_user</code><br>2. Enter password = <code>secret_sauce</code><br>3. Click Login</td>
       <td style="padding: 8px;">Error message displayed: *...this user has been locked out.*</td>
       <td style="padding: 8px; color: green;">✅ Pass</td>
     </tr>
@@ -80,6 +80,17 @@
       <td style="padding: 8px; color: green;">✅ Pass</td>
     </tr>
     <tr style="background-color:#f9f9f9;">
+      <td style="padding: 8px;"><b>TC-SD-006-N</b></td>
+      <td style="padding: 8px;">Checkout</td>
+      <td style="padding: 8px;">Checkout with missing required field</td>
+      <td style="padding: 8px;">High</td>
+      <td style="padding: 8px;">Negative</td>
+      <td style="padding: 8px;">Logged in + 1 product in cart (on Cart page)</td>
+      <td style="padding: 8px;">1. Click <i>Checkout</i><br>2. Leave <b>First Name</b> empty (fill Last Name &amp; Postal Code)<br>3. Click <i>Continue</i></td>
+      <td style="padding: 8px;">Stays on <b>Checkout: Your Information</b> and shows error:<br><i>Error: First Name is required</i>.</td>
+      <td style="padding: 8px; color: green;">✅ Pass</td>
+    </tr>
+    <tr>
       <td style="padding: 8px;"><b>TC-SD-007</b></td>
       <td style="padding: 8px;">Products</td>
       <td style="padding: 8px;">Sort products by Price (low→high)</td>
@@ -90,7 +101,7 @@
       <td style="padding: 8px;">Products displayed in ascending order by price.</td>
       <td style="padding: 8px; color: green;">✅ Pass</td>
     </tr>
-    <tr>
+    <tr style="background-color:#f9f9f9;">
       <td style="padding: 8px;"><b>TC-SD-008</b></td>
       <td style="padding: 8px;">Cart</td>
       <td style="padding: 8px;">Cart state persists after navigation</td>
@@ -101,18 +112,18 @@
       <td style="padding: 8px;">Cart badge still = 1.</td>
       <td style="padding: 8px; color: green;">✅ Pass</td>
     </tr>
-    <tr style="background-color:#f9f9f9;">
+    <tr>
       <td style="padding: 8px;"><b>TC-SD-009</b></td>
       <td style="padding: 8px;">Login</td>
       <td style="padding: 8px;">Logout & access protection</td>
       <td style="padding: 8px;">High</td>
       <td style="padding: 8px;">Security</td>
       <td style="padding: 8px;">Logged in, on Products page</td>
-      <td style="padding: 8px;">1. Open menu<br>2. Click Logout<br>3. Try to access `/inventory.html`</td>
+      <td style="padding: 8px;">1. Open menu<br>2. Click Logout<br>3. Try to access <code>/inventory.html</code></td>
       <td style="padding: 8px;">Redirected to Login page. Access denied.</td>
       <td style="padding: 8px; color: green;">✅ Pass</td>
     </tr>
-    <tr>
+    <tr style="background-color:#f9f9f9;">
       <td style="padding: 8px;"><b>TC-SD-010</b></td>
       <td style="padding: 8px;">Products</td>
       <td style="padding: 8px;">Product details page</td>
