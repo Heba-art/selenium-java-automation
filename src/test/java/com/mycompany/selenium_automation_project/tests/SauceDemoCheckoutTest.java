@@ -14,7 +14,6 @@ public class SauceDemoCheckoutTest extends BaseTest{
 	@Test
     public void TC_SD_006_completeCheckoutFlow() {
 		
-	
 		final String product= "Sauce Labs Backpack";
 		 // Login
 		LoginPage login = new LoginPage (driver);

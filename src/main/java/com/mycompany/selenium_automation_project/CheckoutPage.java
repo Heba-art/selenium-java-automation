@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.netty.handler.timeout.TimeoutException;
+
 public class CheckoutPage {
 	private final WebDriver driver;
 	private final WebDriverWait wait;
@@ -58,6 +60,25 @@ public class CheckoutPage {
             return false;
         }
     }
-	
+	// Click Continue without filling info 
+	public void clickContinueOnly(){
+		wait.until(ExpectedConditions.elementToBeClickable(continueBtn)).click();	
+	}
+	// Get inline error message shown under the title (data-test='error')
+	public String getErrorMessage() {
+	try {
+		By error = By.cssSelector("[data-test='error']");
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(error)).getText().trim();
+		}catch (NoSuchElementException | TimeoutException e) {
+	        return null;
+	    }
+	}
+	// Optional: clear all fields (useful when trying multiple variants)
+	public void clearInfoFields() {
+	    driver.findElement(firstName).clear();
+	    driver.findElement(lastName).clear();
+	    driver.findElement(postal).clear();
+	}
 
+	
 }
