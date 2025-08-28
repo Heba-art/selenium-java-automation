@@ -3,7 +3,6 @@ package com.mycompany.selenium_automation_project;
 
 
 import java.util.NoSuchElementException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
@@ -41,7 +40,7 @@ public class CartPage {
         return !driver.findElements(cartItemRowByName(name)).isEmpty();
     }
  
- // CartPage.java (snippet)
+ 
     public void removeProductFromCart(String productName) {
         // Row locator: full cart row that contains the product name
         By rowLocator = cartItemRowByName(productName);
@@ -72,7 +71,13 @@ public class CartPage {
                 ExpectedConditions.numberOfElementsToBe(rowLocator, Math.max(0, before - 1))
         ));
     }
-
+    public CheckoutPage clickCheckout() {
+    	By checkoutBtn = By.id("checkout");
+    	wait.until(ExpectedConditions.elementToBeClickable(checkoutBtn)).click();
+    	CheckoutPage checkout = new CheckoutPage (driver, wait);
+    	checkout.waitUntilInfoLoaded();
+        return checkout;
+    }
 }
 
  

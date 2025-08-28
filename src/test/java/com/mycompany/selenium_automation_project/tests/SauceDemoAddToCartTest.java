@@ -2,19 +2,19 @@
 package com.mycompany.selenium_automation_project.tests;
 
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.mycompany.selenium_automation_project.CartPage;
 import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.ProductsPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
 public class SauceDemoAddToCartTest extends BaseTest {
-	//Test Case4
+
 	@Test 
-	public void addSingleItemToCart_shouldShowBadgeAndItemInCart() {
+	public void TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart() {
 	    final String product = "Sauce Labs Backpack";
 
 	    // 1) Login
@@ -43,9 +43,9 @@ public class SauceDemoAddToCartTest extends BaseTest {
 	    wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("title"), "Your Cart"));
 	    Assert.assertTrue(cart.isProductInCart(product), "Cart should contain '" + product + "'.");
 	}
-	//Test Case5
+	
 	@Test 
-    public void removeItemFromCart_shouldEmptyCartAndHideBadge() {
+    public void TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge() {
         final String product = "Sauce Labs Backpack";
 
         // 1. Login

@@ -9,9 +9,9 @@ import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
 public class SauceDemoLoginValidTest extends BaseTest {
-	//Test Case1
+	
     @Test
-    public void loginWithValidCredentials_shouldNavigateToProducts() {
+    public void TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open(baseUrl);
         loginPage.login("standard_user", "secret_sauce");

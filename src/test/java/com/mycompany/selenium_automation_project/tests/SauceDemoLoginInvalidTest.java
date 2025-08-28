@@ -12,9 +12,9 @@ import com.mycompany.selenium_automation_project.base.BaseTest;
 
 
 public class SauceDemoLoginInvalidTest extends BaseTest {
-	//Test Case2
+	
 	@Test
-	public void loginWithInvalidPassword_shouldShowErrorAndStayOnLogin() {
+	public void TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin() {
 		
 		
 		  LoginPage loginPage = new LoginPage(driver);
