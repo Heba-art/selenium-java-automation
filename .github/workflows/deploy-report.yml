@@ -1,0 +1,48 @@
+# اسم الـ Workflow الذي سيظهر في تبويب Actions
+name: Deploy Allure Report to GitHub Pages
+
+# المشغل: هذا الـ Workflow سيعمل عند كل عملية push إلى الفرع الرئيسي
+on:
+  push:
+    branches:
+      - main  #  أو 'master' حسب اسم الفرع الرئيسي لديك
+
+jobs:
+  build-and-deploy:
+    # سيتم تشغيل المهمة على أحدث إصدار من Ubuntu متوفر لدى GitHub
+    runs-on: ubuntu-latest
+    steps:
+      # الخطوة 1: سحب كود المشروع إلى بيئة العمل
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # الخطوة 2: إعداد بيئة Java JDK
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11' # يمكنك تغيير هذا ليتوافق مع إصدار مشروعك
+
+      # الخطوة 3: تثبيت Allure CLI في بيئة العمل
+      - name: Install Allure CLI
+        run: |
+          sudo wget https://github.com/allure-framework/allure2/releases/download/2.29.0/allure-2.29.0.tgz
+          sudo tar -zxvf allure-2.29.0.tgz -C /opt/
+          sudo ln -s /opt/allure-2.29.0/bin/allure /usr/bin/allure
+          allure --version
+
+      # الخطوة 4: تشغيل اختبارات Maven لتوليد النتائج
+      - name: Run Maven tests
+        run: mvn clean test
+
+      # الخطوة 5: توليد تقرير Allure بصيغة HTML من النتائج
+      - name: Generate Allure report
+        run: allure generate allure-results -o allure-report --clean
+
+      # الخطوة 6: نشر التقرير على فرع gh-pages
+      # هذا الإجراء يقوم بكل العمل اليدوي (commit & push) تلقائياً
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
