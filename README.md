@@ -97,6 +97,13 @@ The following features are planned for future development to enhance the framewo
 -   [ ] **Parallel Execution:** Implement parallel test execution using TestNG to reduce run time.
 -   [ ] **CI/CD Integration:** Set up a continuous integration pipeline using **GitHub Actions** or **Jenkins**.
 
+## 📊 Allure Reports
+
+### Generate Report Locally
+```bash
+allure generate target/allure-results -o target/allure-report --clean
+allure serve allure-results
+```
 ## 🔗 Connect with Me
 
 This project is a key part of my growth as a **Test Automation Engineer**. Follow my progress and connect with me!
