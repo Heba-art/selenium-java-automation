@@ -20,6 +20,9 @@ public class ProductsPage {
     private final By inventoryList = By.className("inventory_list");
     private final By priceLabels = By.cssSelector(".inventory_item_price");
     private final By sortSelectByClass  = By.cssSelector("select.product_sort_container");
+  //TC-SD-009
+    private final By burgerMenuBtn   = By.id("react-burger-menu-btn");
+    private final By logoutLink      = By.id("logout_sidebar_link");
     
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
@@ -30,11 +33,6 @@ public class ProductsPage {
         wait.until(ExpectedConditions.presenceOfElementLocated(inventoryList));
     }
     public String getCartBadgeText() {
-//        try {
-//          return driver.findElement(cartBadge).getText().trim();
-//        } catch (NoSuchElementException e) {
-//            return null;
-//        }
     	List<WebElement> badges = driver.findElements(cartIcon);
     	return badges.isEmpty() ? null : badges.get(0).getText().trim();
     	
@@ -113,6 +111,19 @@ public class ProductsPage {
   }
    public boolean isCartBadgeDisplayed() {
 	 return !driver.findElements(cartBadge).isEmpty();
+   }
+   public void openMenu() {
+	   wait.until(ExpectedConditions.elementToBeClickable(burgerMenuBtn)).click();
+	   wait.until(ExpectedConditions.visibilityOfElementLocated(logoutLink));   
+   }
+   public LoginPage clickLogout() {
+	   if (driver.findElements(logoutLink).isEmpty()) {
+		   openMenu();
+	   }
+	   wait.until(ExpectedConditions.elementToBeClickable(logoutLink)).click();
+	   LoginPage login = new LoginPage(driver);
+	   login.waitUntilLoaded();
+	   return login;
    }
 	   
 }

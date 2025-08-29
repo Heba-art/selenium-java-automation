@@ -21,7 +21,7 @@ public class BaseTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         baseUrl = "https://www.saucedemo.com/";
-        
+//        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // 1) إعداد الخيارات
         ChromeOptions options = new ChromeOptions();
 

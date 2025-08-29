@@ -2,7 +2,7 @@
 <suite name="My Automation Suite" verbose="1">
   <test name="Cart Functionality Test">
     <classes>
-      <class name="com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest"/>
+      <class name="com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest"/>
     </classes>
   </test>
 </suite>
