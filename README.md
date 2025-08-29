@@ -1,114 +1,107 @@
 # Selenium Automation Project – SauceDemo
 
-🚀 **Automated UI Testing with Java, Selenium, and TestNG**
+🚀 **An automated UI testing framework for the SauceDemo e-commerce website, built with Java, Selenium, and TestNG.**
 
-This project is part of my QA Automation learning journey, showcasing how I design and build scalable test automation frameworks.  
-It covers functional test cases for the [SauceDemo](https://www.saucedemo.com/) application.
+This repository is part of my continuous learning journey as a QA Automation Engineer. It demonstrates a scalable and maintainable test automation framework using the Page Object Model (POM) design pattern.
 
----
+## ✅ Test Coverage & Features
 
-## 📌 Overview
-This project is a Selenium Test Automation framework built for **SauceDemo** site.  
-It includes **login functionality tests** and **cart functionality tests**, following **Page Object Model (POM)** design.
+This framework includes a comprehensive suite of tests covering the main user flows of the SauceDemo application. The current test suite covers **10+ scenarios**, including:
 
----
+-   **Login Functionality:**
+    -   Successful login with valid credentials.
+    -   Failed login with an invalid password.
+    -   Verifying the error message for locked-out users.
+    -   Ensuring logged-out users cannot access protected pages (e.g., inventory).
 
-## ✅ Work Done
-- Implemented **Login tests**:
-  - Valid login (success)
-  - Invalid login (wrong password)
-  - Locked out user
-- Implemented **Cart test**:
-  - Add single item to cart
-  - Remove item from cart
-- Created **TestCases.md** file:
-  - Contains all test cases in table format
-  - Includes steps, expected results, and actual results
+-   **Product & Inventory:**
+    -   Verifying product details on the product page.
+    -   Sorting products by price (e.g., Low to High).
 
----
+-   **Shopping Cart & Checkout:**
+    -   Adding an item to the shopping cart.
+    -   Verifying that the cart state persists after logging out and back in.
+    -   Validating the checkout process with missing user information (negative test).
+    -   Completing the end-to-end checkout flow successfully.
 
-## 🛠️ Tech Stack
-- **Java**  
-- **Selenium WebDriver**  
-- **TestNG**  
-- **Maven**  
-- **Allure Reports (planned)**  
+## 🛠️ Tech Stack & Tools
 
-## ▶️ How to Run
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/Heba-art/selenium-automation-project.git
-   
----
+-   **Core Language:** **Java**
+-   **Browser Automation:** **Selenium WebDriver**
+-   **Test Runner:** **TestNG**
+-   **Build & Dependency Management:** **Maven**
+-   **Design Pattern:** **Page Object Model (POM)**
 
----
+## 📂 Project Structure
 
-## ✅ Current Coverage (10 Test Cases)
-- **Login**
-  - Valid login  
-  - Invalid login  
-  - Locked-out user  
+s- **selenium-automation-project/**
+  - **src/**
+    - **main/java/**
+      - **com/mycompany/selenium_automation_project/**
+        - `CartPage.java`
+        - `CheckoutPage.java`
+        - `LoginPage.java`
+        - `ProductDetailsPage.java`
+        - `ProductsPage.java`
+    - **test/java/**
+      - **com/mycompany/selenium_automation_project/**
+        - **base/**
+          - `BaseTest.java`
+        - **tests/**
+          - `SauceDemoAddToCartTest.java`
+          - `SauceDemoCartPersistenceTest.java`
+          - `SauceDemoCheckoutNegativeTest.java`
+          - `SauceDemoCheckoutTest.java`
+          - `SauceDemoLoginInvalidTest.java`
+          - `SauceDemoLoginLockedOutTest.java`
+          - `SauceDemoLoginValidTest.java`
+          - `SauceDemoLogoutProtectionTest.java`
+          - `SauceDemoProductDetailsTest.java`
+          - `SauceDemoSortTest.java`
+  - `allure-results/`
+  - `target/`
+  - `pom.xml`
+  - `README.md`
+  - `TestCases.md`
+  - `testng.xml`
 
-- **Cart**
-  - Add single item  
-  - Remove item  
+## ▶️ How to Run Tests
 
-- **Checkout**
-  - Complete checkout flow  
+1.  **Prerequisites:**
+    -   Java Development Kit (JDK) installed.
+    -   Apache Maven installed.
+    -   A web browser (e.g., Chrome) installed.
 
-- **Products**
-  - Sort products (low → high)  
-  - Cart state persists after navigation  
-  - Logout & access protection  
+2.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Heba-art/selenium-automation-project.git](https://github.com/Heba-art/selenium-automation-project.git)
+    cd selenium-automation-project
+    ```
 
-📌 *Target: 25–30 scenarios including sorting options, multi-item cart, reset app state, checkout validations, totals/tax, protected routes.*
+3.  **Install dependencies:**
+    ```bash
+    mvn clean install
+    ```
 
----
+4.  **Execute the tests:**
+    ```bash
+    mvn test
+    ```
 
-## 🛠️ Tech Stack
-- Java + Maven  
-- Selenium WebDriver  
-- TestNG  
-- Page Object Model (POM)  
+## 🗺️ Roadmap & Future Enhancements
 
----
+The following features are planned for future development to enhance the framework's capabilities:
 
-## 📊 Reporting & CI/CD (Planned)
-- [ ] Allure Reports + Screenshots on failure  
-- [ ] Cross-browser (Chrome/Edge/Firefox)  
-- [ ] Parallel execution with TestNG  
-- [ ] GitHub Actions / Jenkins integration  
+-   [ ] **Reporting:** Integrate **Allure Reports** for detailed test execution results with screenshots on failure.
+-   [ ] **Cross-Browser Testing:** Configure the framework to run tests across Chrome, Firefox, and Edge.
+-   [ ] **Parallel Execution:** Implement parallel test execution using TestNG to reduce run time.
+-   [ ] **CI/CD Integration:** Set up a continuous integration pipeline using **GitHub Actions** or **Jenkins**.
 
----
+## 🔗 Connect with Me
 
-## 🌟 My QA Journey
-This repo is part of my continuous growth as a **Test Automation Engineer**.  
-Follow my journey on LinkedIn 👉 #Heba_QAJourney
+This project is a key part of my growth as a **Test Automation Engineer**. Follow my progress and connect with me!
 
----
+-   💼 **LinkedIn:** [linkedin.com/in/heba-al-rubaye-21180021b](https://www.linkedin.com/in/heba-al-rubaye-21180021b)
+-   📂 **GitHub:** [github.com/Heba-art](https://github.com/Heba-art)
 
-## 🔗 Connect
-- 💼 LinkedIn: [www.linkedin.com/in/heba-al-rubaye-21180021b](#)  
-- 📂 GitHub: [https://github.com/Heba-art](#)
-
-## ▶️Project Structure 
-
-```markdown
-src
- ├── main/java
- │   └── com.mycompany.selenium_automation_project
- │         ├── LoginPage.java
- │         ├── ProductsPage.java
- │         └── CartPage.java
- ├── test/java
- │   └── com.mycompany.selenium_automation_project.tests
- │         ├── SauceDemoLoginValidTest.java
- │         ├── SauceDemoLoginInvalidTest.java
- │         ├── SauceDemoLoginLockedOutTest.java
- │         └── SauceDemoAddToCartTest.java
-TestCases.md
-README.md
-pom.xml
-testng.xml
----
-
+The project follows a standard Maven structure, separating page objects, test cases, and supporting files for maintainability.
