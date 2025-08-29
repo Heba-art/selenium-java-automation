@@ -125,9 +125,13 @@ public class ProductsPage {
 	   login.waitUntilLoaded();
 	   return login;
    }
-	   
-}
-			
-	
+   public ProductDetailsPage openProductByName(String name) {
+	   By productLocator = By.xpath("//div[normalize-space()='" + name + "']");
+	   wait.until(ExpectedConditions.elementToBeClickable(productLocator)).click();  
+	   ProductDetailsPage details = new ProductDetailsPage(driver, wait);
+	    details.waitUntilLoaded();
+	    return details;
+   }
+}	
     
 

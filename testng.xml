@@ -1,8 +1,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="My Automation Suite" verbose="1">
-  <test name="Cart Functionality Test">
-    <classes>
-      <class name="com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest"/>
-    </classes>
+<suite name="SauceDemo Suite" verbose="1" parallel="false">
+  <test name="All Tests">
+    <packages>
+      <!-- غيّر الاسم لو حزمة اختباراتك مختلفة -->
+      <package name="com.mycompany.selenium_automation_project.tests"/>
+    </packages>
   </test>
 </suite>
