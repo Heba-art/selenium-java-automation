@@ -29,12 +29,13 @@ public class SauceDemoSortTest extends BaseTest{
 	        List<Double> prices= products.getDisplayedPrices();
 	        Assert.assertTrue(prices.size() > 0, "Prices should be visible");
 	        Assert.assertTrue(ProductsPage.isSortedAscending(prices), "Prices should be sorted ascending (low→high)");
+	        
 	        //DEBUG
 	        products.waitUntilLoaded();
 	        System.out.println("DEBUG URL:   " + driver.getCurrentUrl());
 	        System.out.println("DEBUG Title: " + driver.getTitle());
 	        System.out.println("DEBUG has sort by class? " + !driver.findElements(By.cssSelector("select.product_sort_container")).isEmpty());//True
-	        System.out.println("DEBUG has sort by data?  " + !driver.findElements(By.cssSelector("select[data-test='product_sort_container']")).isEmpty());//false
+	        System.out.println("DEBUG has sort by data?  " + !driver.findElements(By.cssSelector("select[data-test='product_sort_container']")).isEmpty());//False
 
 	       
 

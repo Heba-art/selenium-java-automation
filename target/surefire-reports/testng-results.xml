@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-28T20:03:20 AEST" name="My Automation Suite" finished-at="2025-08-28T20:03:24 AEST" duration-ms="3752">
+  <suite started-at="2025-08-29T10:35:12 AEST" name="My Automation Suite" finished-at="2025-08-29T10:35:16 AEST" duration-ms="4033">
     <groups>
     </groups>
-    <test started-at="2025-08-28T20:03:20 AEST" name="Cart Functionality Test" finished-at="2025-08-28T20:03:24 AEST" duration-ms="3752">
-      <class name="com.mycompany.selenium_automation_project.tests.SauceDemoSortTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@5f049ea1]" started-at="2025-08-28T20:03:20 AEST" name="setUp" finished-at="2025-08-28T20:03:22 AEST" duration-ms="1859" status="PASS">
+    <test started-at="2025-08-29T10:35:12 AEST" name="Cart Functionality Test" finished-at="2025-08-29T10:35:16 AEST" duration-ms="4033">
+      <class name="com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@5f049ea1]" started-at="2025-08-29T10:35:12 AEST" name="setUp" finished-at="2025-08-29T10:35:14 AEST" duration-ms="1899" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_007_sortByPriceLowToHigh()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@5f049ea1]" started-at="2025-08-28T20:03:22 AEST" name="TC_SD_007_sortByPriceLowToHigh" finished-at="2025-08-28T20:03:24 AEST" duration-ms="1569" status="PASS">
+        <test-method signature="TC_SD_008_cartStatePersistsAfterNavigation()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@5f049ea1]" started-at="2025-08-29T10:35:14 AEST" name="TC_SD_008_cartStatePersistsAfterNavigation" finished-at="2025-08-29T10:35:16 AEST" duration-ms="1804" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_SD_007_sortByPriceLowToHigh -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@5f049ea1]" started-at="2025-08-28T20:03:24 AEST" name="tearDown" finished-at="2025-08-28T20:03:24 AEST" duration-ms="173" status="PASS">
+        </test-method> <!-- TC_SD_008_cartStatePersistsAfterNavigation -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@5f049ea1]" started-at="2025-08-29T10:35:16 AEST" name="tearDown" finished-at="2025-08-29T10:35:16 AEST" duration-ms="180" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoSortTest -->
+      </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest -->
     </test> <!-- Cart Functionality Test -->
   </suite> <!-- My Automation Suite -->
 </testng-results>

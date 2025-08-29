@@ -30,11 +30,14 @@ public class ProductsPage {
         wait.until(ExpectedConditions.presenceOfElementLocated(inventoryList));
     }
     public String getCartBadgeText() {
-        try {
-          return driver.findElement(cartBadge).getText().trim();
-        } catch (NoSuchElementException e) {
-            return null;
-        }
+//        try {
+//          return driver.findElement(cartBadge).getText().trim();
+//        } catch (NoSuchElementException e) {
+//            return null;
+//        }
+    	List<WebElement> badges = driver.findElements(cartIcon);
+    	return badges.isEmpty() ? null : badges.get(0).getText().trim();
+    	
     }
     public CartPage openCart() {
         wait.until(ExpectedConditions.elementToBeClickable(cartIcon)).click();
@@ -81,7 +84,7 @@ public class ProductsPage {
             wait.until(ExpectedConditions.elementToBeClickable(selectEl));
             new Select(selectEl).selectByValue("lohi"); // low→high
         } catch (Exception e) {
-            // Fallback
+            // Fallback / dispatchEvent
             ((JavascriptExecutor) driver).executeScript(
                "arguments[0].value='lohi'; arguments[0].dispatchEvent(new Event('change',{bubbles:true}));",
                 selectEl
@@ -108,6 +111,9 @@ public class ProductsPage {
 		if (nums.get(i) < nums.get(i-1)) return false;
 	} return true;
   }
+   public boolean isCartBadgeDisplayed() {
+	 return !driver.findElements(cartBadge).isEmpty();
+   }
 	   
 }
 			

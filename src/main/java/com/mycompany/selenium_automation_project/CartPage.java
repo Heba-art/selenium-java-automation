@@ -78,6 +78,13 @@ public class CartPage {
     	checkout.waitUntilInfoLoaded();
         return checkout;
     }
+    public ProductsPage clickContinueShopping() {
+    By continueShoppingBtn = By.id("continue-shopping");
+    wait.until(ExpectedConditions.elementToBeClickable(continueShoppingBtn)).click();
+    ProductsPage products = new ProductsPage(driver);
+    products.waitUntilLoaded();
+    return products;
+    }
 }
 
  
