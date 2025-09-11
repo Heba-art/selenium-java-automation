@@ -1,7 +1,10 @@
 package com.mycompany.selenium_automation_project.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Allure;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,6 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.io.ByteArrayInputStream;
+
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -49,10 +55,22 @@ public class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown() {
+    public void tearDown(ITestResult result) {
         if (driver != null) {
-            driver.quit();
+            try {
+                // take screenshot after each test
+                byte[] png = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                Allure.addAttachment("Screenshot", new ByteArrayInputStream(png));
+
+                // add current URL too
+                Allure.addAttachment("URL", driver.getCurrentUrl());
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                driver.quit();
+            }
         }
     }
+
     
 }

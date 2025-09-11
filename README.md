@@ -1,6 +1,21 @@
 # Selenium Automation Project – SauceDemo
 
-🚀 **An automated UI testing framework for the SauceDemo e-commerce website, built with Java, Selenium, and TestNG.**
+![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=java&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white)
+![TestNG](https://img.shields.io/badge/TestNG-FF6F00?style=flat-square)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=apache-maven&logoColor=white)
+![Pattern: POM](https://img.shields.io/badge/Pattern-Page%20Object%20Model-1E90FF?style=flat-square)
+![Platform](https://img.shields.io/badge/Platform-SauceDemo-FF4500?style=flat-square)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
+![Status](https://img.shields.io/badge/Status-In%20Progress-lightgrey?style=flat-square)
+![Report: Allure](https://img.shields.io/badge/Report-Allure-FF69B4?style=flat-square)
+![Build](https://img.shields.io/badge/Build-Passing-brightgreen?style=flat-square)
+
+
+![Profile Views](https://komarev.com/ghpvc/?username=heba-art&color=blue)
+![GitHub Repo stars](https://img.shields.io/github/stars/heba-art/selenium-java-automation?style=social)
+![GitHub forks](https://img.shields.io/github/forks/heba-art/selenium-java-automation?style=social)
+
 
 This repository is part of my continuous learning journey as a QA Automation Engineer. It demonstrates a scalable and maintainable test automation framework using the Page Object Model (POM) design pattern.
 
