@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProductsPage {
@@ -23,6 +24,8 @@ public class ProductsPage {
   //TC-SD-009
     private final By burgerMenuBtn   = By.id("react-burger-menu-btn");
     private final By logoutLink      = By.id("logout_sidebar_link");
+  //TC-SD-011
+    private By productNames = By.cssSelector(".inventory_item_name");
     
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
@@ -132,6 +135,29 @@ public class ProductsPage {
 	    details.waitUntilLoaded();
 	    return details;
    }
+   
+   public void sortByNameAToZ() {
+	 WebElement dropdown = driver.findElement(sortSelectByClass); 
+	 new Select(dropdown).selectByValue("az");   
+   }
+   
+   public List<String> getProductNames() {
+	   List<WebElement> elements = driver.findElements(productNames);
+       List<String> names = new ArrayList<>();
+       for (WebElement e : elements) {
+           names.add(e.getText().trim());
+       }
+       return names;	   
+   }
+   public boolean isSortedByNameAToZ() {
+	   List<String> actual = getProductNames();
+	   List<String> expected = new ArrayList<>(actual);
+	   expected.sort(Comparator.comparing(String::toString, String.CASE_INSENSITIVE_ORDER));
+	   return actual.equals(expected);
+	   
+   }
+   
+   
 }	
     
 

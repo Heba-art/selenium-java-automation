@@ -143,7 +143,7 @@
   <td style="padding: 8px;">Logged in, on Products page</td>
   <td style="padding: 8px;">1. Open sorting dropdown<br>2. Select <i>Name (A to Z)</i></td>
   <td style="padding: 8px;">Products listed in ascending alphabetical order by name.</td>
-  <td style="padding: 8px;">—</td>
+  <td style="padding: 8px;">✅ Pass</td>
 </tr>
 
 <tr>
