@@ -17,6 +17,8 @@ public class CartPage {
 	private final By title= By.className("title"); // "Your Cart"
 	private WebDriverWait wait;
 	
+	private final By checkoutBtn = By.id("checkout");
+	private final By continueShoppingBtn = By.id("continue-shopping");
 	
 	public CartPage(WebDriver driver,WebDriverWait wait) {
         this.driver = driver;
@@ -39,7 +41,6 @@ public class CartPage {
     public boolean isProductInCart(String name) {
         return !driver.findElements(cartItemRowByName(name)).isEmpty();
     }
- 
  
     public void removeProductFromCart(String productName) {
         // Row locator: full cart row that contains the product name
@@ -72,14 +73,12 @@ public class CartPage {
         ));
     }
     public CheckoutPage clickCheckout() {
-    	By checkoutBtn = By.id("checkout");
     	wait.until(ExpectedConditions.elementToBeClickable(checkoutBtn)).click();
     	CheckoutPage checkout = new CheckoutPage (driver, wait);
     	checkout.waitUntilInfoLoaded();
         return checkout;
     }
     public ProductsPage clickContinueShopping() {
-    By continueShoppingBtn = By.id("continue-shopping");
     wait.until(ExpectedConditions.elementToBeClickable(continueShoppingBtn)).click();
     ProductsPage products = new ProductsPage(driver);
     products.waitUntilLoaded();

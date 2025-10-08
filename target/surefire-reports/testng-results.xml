@@ -2,31 +2,31 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-07T12:46:10 AEDT" name="SauceDemo Suite" finished-at="2025-10-07T12:46:17 AEDT" duration-ms="7339">
+  <suite started-at="2025-10-08T14:08:50 AEDT" name="SauceDemo Suite" finished-at="2025-10-08T14:08:54 AEDT" duration-ms="4508">
     <groups>
     </groups>
-    <test started-at="2025-10-07T12:46:10 AEDT" name="All Tests" finished-at="2025-10-07T12:46:17 AEDT" duration-ms="7339">
-      <class name="com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@5afa3c9]" started-at="2025-10-07T12:46:10 AEDT" name="setUp" finished-at="2025-10-07T12:46:13 AEDT" duration-ms="2358" status="PASS">
+    <test started-at="2025-10-08T14:08:50 AEDT" name="All Tests" finished-at="2025-10-08T14:08:54 AEDT" duration-ms="4508">
+      <class name="com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@28261e8e]" started-at="2025-10-08T14:08:50 AEDT" name="setUp" finished-at="2025-10-08T14:08:52 AEDT" duration-ms="1995" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_011_sortProductsByNameAToZ()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@5afa3c9]" started-at="2025-10-07T12:46:13 AEDT" name="TC_SD_011_sortProductsByNameAToZ" finished-at="2025-10-07T12:46:17 AEDT" duration-ms="4308" status="PASS">
+        <test-method signature="TC_SD_012_verifyTotalsAndTaxOnOverview()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@28261e8e]" started-at="2025-10-08T14:08:52 AEDT" name="TC_SD_012_verifyTotalsAndTaxOnOverview" description="TC-SD-012: Verify totals &amp; tax on Checkout Overview" finished-at="2025-10-08T14:08:54 AEDT" duration-ms="2081" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_SD_011_sortProductsByNameAToZ -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@5afa3c9]" started-at="2025-10-07T12:46:17 AEDT" name="tearDown" finished-at="2025-10-07T12:46:17 AEDT" duration-ms="510" status="PASS">
+        </test-method> <!-- TC_SD_012_verifyTotalsAndTaxOnOverview -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@28261e8e]" started-at="2025-10-08T14:08:54 AEDT" name="tearDown" finished-at="2025-10-08T14:08:54 AEDT" duration-ms="287" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_011_sortProductsByNameAToZ status=SUCCESS method=SauceDemoSortByNameAToZTest.TC_SD_011_sortProductsByNameAToZ()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@5afa3c9] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_012_verifyTotalsAndTaxOnOverview status=SUCCESS method=SauceDemoCheckoutTotalsTest.TC_SD_012_verifyTotalsAndTaxOnOverview()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@28261e8e] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest -->
+      </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest -->
     </test> <!-- All Tests -->
   </suite> <!-- SauceDemo Suite -->
 </testng-results>

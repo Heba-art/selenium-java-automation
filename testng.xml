@@ -2,7 +2,7 @@
 <suite name="SauceDemo Suite" verbose="1" parallel="false">
   <test name="All Tests">
    <classes>
-     <class name="com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest"/>
+     <class name="com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest"/>
     </classes>
   </test>
 </suite>

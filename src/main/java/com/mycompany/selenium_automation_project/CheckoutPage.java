@@ -22,6 +22,10 @@ public class CheckoutPage {
 	private final By finishBtn = By.id("finish");
 	// Step 3: Complete
     private final By completeHeader = By.className("complete-header"); //"Thank you for your order!"
+    //TC 12
+    private By itemTotalLabel = By.cssSelector(".summary_subtotal_label");
+    private By taxLabel = By.cssSelector(".summary_tax_label");
+    private By totalLabel = By.cssSelector(".summary_total_label");
 	
     public CheckoutPage (WebDriver driver, WebDriverWait wait) {
     	 this.driver = driver;
@@ -79,6 +83,17 @@ public class CheckoutPage {
 	    driver.findElement(lastName).clear();
 	    driver.findElement(postal).clear();
 	}
-
 	
+	public double getItemTotal() {
+		String text = driver.findElement(itemTotalLabel).getText().replace("Item total: $","").trim();	
+		 return Double.parseDouble(text);	
+	   }
+	public double getTax() {
+		 String text = driver.findElement(taxLabel).getText().replace("Tax: $", "").trim();
+		    return Double.parseDouble(text);
+		}
+		public double getTotal() {
+		    String text = driver.findElement(totalLabel).getText().replace("Total: $", "").trim();
+		    return Double.parseDouble(text);
+		}		
 }

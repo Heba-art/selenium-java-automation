@@ -143,7 +143,7 @@
   <td style="padding: 8px;">Logged in, on Products page</td>
   <td style="padding: 8px;">1. Open sorting dropdown<br>2. Select <i>Name (A to Z)</i></td>
   <td style="padding: 8px;">Products listed in ascending alphabetical order by name.</td>
-  <td style="padding: 8px;">✅ Pass</td>
+  <td style="padding: 8px; color: green;">✅ Pass</td>
 </tr>
 
 <tr>
@@ -155,7 +155,7 @@
   <td style="padding: 8px;">Logged in; add <b>Sauce Labs Backpack</b> ($29.99) and <b>Sauce Labs Bike Light</b> ($9.99) to cart</td>
   <td style="padding: 8px;">1. Open cart → <i>Checkout</i><br>2. Fill info → <i>Continue</i> (Overview page)</td>
   <td style="padding: 8px;">Item total = <b>$39.98</b>; Tax = <b>$3.20</b> (8%); Total = <b>$43.18</b>.</td>
-  <td style="padding: 8px;">—</td>
+  <td style="padding: 8px; color: green;">✅ Pass</td>
 </tr>
 
 <tr style="background-color:#f9f9f9;">
