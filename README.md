@@ -132,8 +132,24 @@ The following features are planned for future development to enhance the framewo
 mvn clean test
 allure generate target/allure-results -o target/allure-report --clean
 allure open target/allure-report
-
 ```
+### Quick Preview
+```bash
+allure serve target/allure-results
+```
+###💡 Tip
+You can also use the ready script:
+
+```bash
+run_allure.bat
+```
+This script automatically:
+
+runs your TestNG tests
+
+preserves Allure history for trend graphs
+
+opens the report in your browser
 ## 🔗 Connect with Me
 
 This project is a key part of my growth as a **Test Automation Engineer**. Follow my progress and connect with me!

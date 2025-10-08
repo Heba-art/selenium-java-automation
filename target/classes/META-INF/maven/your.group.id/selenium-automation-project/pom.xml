@@ -23,21 +23,21 @@
           <suiteXmlFile>testng.xml</suiteXmlFile>
         </suiteXmlFiles>
 
-        <!-- هنا بنجبر Allure يكتب في target/allure-results -->
+        <!-- Here we force Allure to write in target/allure-results -->
         <systemPropertyVariables>
           <allure.results.directory>target/allure-results</allure.results.directory>
         </systemPropertyVariables>
       </configuration>
     </plugin>
 
-    <!-- Allure Maven (اختياري للتوليد/الفتح) -->
+    <!-- Allure Maven -->
     <plugin>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-maven</artifactId>
       <version>2.11.2</version>
     </plugin>
 
-    <!-- تنظيف أي allure-results قديم في جذر المشروع -->
+    <!-- Clean any old allure-results in the project root-->
 	    <plugin>
 	      <groupId>org.apache.maven.plugins</groupId>
 	      <artifactId>maven-clean-plugin</artifactId>
