@@ -47,37 +47,51 @@ This framework includes a comprehensive suite of tests covering the main user fl
 -   **Design Pattern:** **Page Object Model (POM)**
 
 ## 📂 Project Structure
-
-s- **selenium-automation-project/**
-  - **src/**
-    - **main/java/**
-      - **com/mycompany/selenium_automation_project/**
-        - `CartPage.java`
-        - `CheckoutPage.java`
-        - `LoginPage.java`
-        - `ProductDetailsPage.java`
-        - `ProductsPage.java`
-    - **test/java/**
-      - **com/mycompany/selenium_automation_project/**
-        - **base/**
-          - `BaseTest.java`
-        - **tests/**
-          - `SauceDemoAddToCartTest.java`
-          - `SauceDemoCartPersistenceTest.java`
-          - `SauceDemoCheckoutNegativeTest.java`
-          - `SauceDemoCheckoutTest.java`
-          - `SauceDemoLoginInvalidTest.java`
-          - `SauceDemoLoginLockedOutTest.java`
-          - `SauceDemoLoginValidTest.java`
-          - `SauceDemoLogoutProtectionTest.java`
-          - `SauceDemoProductDetailsTest.java`
-          - `SauceDemoSortTest.java`
-  - `allure-results/`
-  - `target/`
-  - `pom.xml`
-  - `README.md`
-  - `TestCases.md`
-  - `testng.xml`
+```bash
+s- selenium-automation-project/
+│
+├── src/
+│   ├── main/java/
+│   │   └── com/mycompany/selenium_automation_project/
+│   │       ├── CartPage.java
+│   │       ├── CheckoutPage.java
+│   │       ├── LoginPage.java
+│   │       ├── ProductDetailsPage.java
+│   │       └── ProductsPage.java
+│   │
+│   └── test/java/
+│       └── com/mycompany/selenium_automation_project/
+│           ├── base/
+│           │   └── BaseTest.java
+│           │
+│           ├── tests/
+│           │   ├── SauceDemoAddToCartTest.java
+│           │   ├── SauceDemoCartPersistenceTest.java
+│           │   ├── SauceDemoCheckoutNegativeTest.java
+│           │   ├── SauceDemoCheckoutTest.java
+│           │   ├── SauceDemoCheckoutTotalsTest.java
+│           │   ├── SauceDemoLoginInvalidTest.java
+│           │   ├── SauceDemoLoginLockedOutTest.java
+│           │   ├── SauceDemoLoginValidTest.java
+│           │   ├── SauceDemoLogoutProtectionTest.java
+│           │   ├── SauceDemoProductDetailsTest.java
+│           │   ├── SauceDemoSortByNameAToZTest.java
+│           │   └── SauceDemoSortTest.java
+│           │
+│           └── util/
+│               └── TestListener.java
+│
+├── allure-results/                 # Allure test result files (JSON, screenshots, etc.)
+├── target/
+│   ├── allure-report/              # Generated Allure HTML reports
+│   ├── surefire-reports/           # Default TestNG reports
+│   └── ...
+│
+├── pom.xml                         # Maven project configuration
+├── testng.xml                      # TestNG suite configuration
+├── README.md                       # Project documentation
+└── TestCases.md                    # Test cases summary
+```
 
 ## ▶️ How to Run Tests
 
@@ -115,8 +129,10 @@ The following features are planned for future development to enhance the framewo
 
 ### Generate Report Locally
 ```bash
+mvn clean test
 allure generate target/allure-results -o target/allure-report --clean
-allure serve allure-results
+allure open target/allure-report
+
 ```
 ## 🔗 Connect with Me
 

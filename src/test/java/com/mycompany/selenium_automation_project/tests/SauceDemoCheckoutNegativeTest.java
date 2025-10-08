@@ -10,6 +10,14 @@ import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.ProductsPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
 public class SauceDemoCheckoutNegativeTest extends BaseTest {
 
 	private void seedCartWithOneItem(String product) {
@@ -27,7 +35,14 @@ public class SauceDemoCheckoutNegativeTest extends BaseTest {
 	Assert.assertTrue(cart.isProductInCart(product), "Item must exist before checkout");
     }
 	
-	@Test
+	@Epic("SauceDemo Automation")
+	@Feature("Checkout")
+	@Story("Negative checkout: missing required field")
+	@Severity(SeverityLevel.NORMAL)
+	@Owner("Heba AL-Rubaye")
+	@Description("Verify that leaving the 'First Name' field empty during checkout displays an appropriate validation error and prevents continuation.")
+	@Test(priority = 6)
+	
     public void TC_SD_006_Negative_missingFirstName_showsError() {
 		final String product = "Sauce Labs Backpack";
 		seedCartWithOneItem(product);
@@ -44,7 +59,14 @@ public class SauceDemoCheckoutNegativeTest extends BaseTest {
         Assert.assertTrue(err.contains("First Name is required"), "Mismatch error: " + err);
     }
 	
-	@Test
+	@Epic("SauceDemo Automation")
+	@Feature("Checkout")
+	@Story("Negative checkout: missing Last Name field")
+	@Severity(SeverityLevel.NORMAL)
+	@Owner("Heba AL-Rubaye")
+	@Description("Verify that leaving the 'Last Name' field empty during checkout triggers the correct validation error message and prevents proceeding to the next step.")
+	@Test(priority = 6)
+	
     public void TC_SD_006_Negative_missingLastName_showsError() {
 		final String product = "Sauce Labs Backpack";
         seedCartWithOneItem(product);
@@ -67,7 +89,14 @@ public class SauceDemoCheckoutNegativeTest extends BaseTest {
         Assert.assertTrue(err.contains("Last Name is required"), "Mismatch error: " + err);
     }
 
-    @Test
+	@Epic("SauceDemo Automation")
+	@Feature("Checkout")
+	@Story("Negative checkout: missing Postal Code field")
+	@Severity(SeverityLevel.NORMAL)
+	@Owner("Heba AL-Rubaye")
+	@Description("Verify that leaving the 'Postal Code' field empty during checkout shows the correct validation error and prevents moving to the next step.")
+	@Test(priority = 6)
+	
     public void TC_SD_006_Negative_missingPostalCode_showsError() {
         final String product = "Sauce Labs Backpack";
         seedCartWithOneItem(product);

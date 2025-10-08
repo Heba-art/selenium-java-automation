@@ -9,9 +9,23 @@ import org.testng.annotations.Test;
 import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
-public class SauceDemoLoginLockedOutTest extends BaseTest {
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 
-	@Test
+public class SauceDemoLoginLockedOutTest extends BaseTest {
+	@Epic("SauceDemo Automation")
+	@Feature("Login")
+	@Severity(SeverityLevel.CRITICAL)
+	@Owner("Heba AL-Rubaye")
+	@Description("Verify that a locked-out user cannot log in and receives the correct error message.")
+	@Test(priority = 3)
+    @Story("Login with locked-out user account")
+	
     public void TC_SD_003_loginWithLockedOutUser_shouldShowLockedOutError() {
 	LoginPage loginPage = new LoginPage(driver);
 

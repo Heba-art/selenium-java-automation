@@ -8,10 +8,25 @@ import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.ProductsPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
 public class SauceDemoCartPersistenceTest extends BaseTest {
 	
 
-	@Test
+	@Epic("SauceDemo Automation")
+	@Feature("Cart")
+	@Story("Cart state persists after navigation")
+	@Severity(SeverityLevel.NORMAL)
+	@Owner("Heba AL-Rubaye")
+	@Description("Verify that items added to the cart remain after navigating away and returning to the Products page.")
+	@Test(priority = 8)
+	
     public void TC_SD_008_cartStatePersistsAfterNavigation() {
 		final String product = "Sauce Labs Backpack";
 		 // 1) Login

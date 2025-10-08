@@ -92,6 +92,7 @@ public class CheckoutPage {
 		 String text = driver.findElement(taxLabel).getText().replace("Tax: $", "").trim();
 		    return Double.parseDouble(text);
 		}
+
 		public double getTotal() {
 		    String text = driver.findElement(totalLabel).getText().replace("Total: $", "").trim();
 		    return Double.parseDouble(text);

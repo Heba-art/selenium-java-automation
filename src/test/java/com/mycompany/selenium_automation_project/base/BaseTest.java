@@ -1,7 +1,15 @@
 package com.mycompany.selenium_automation_project.base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Allure;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -9,26 +17,25 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.io.ByteArrayInputStream;
-
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Allure;
 
 public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected String baseUrl;
-
+    
     @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         baseUrl = "https://www.saucedemo.com/";
 //        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        // 1) إعداد الخيارات
+        //1
         ChromeOptions options = new ChromeOptions();
 
         Map<String, Object> prefs = new HashMap<>();
@@ -58,19 +65,47 @@ public class BaseTest {
     public void tearDown(ITestResult result) {
         if (driver != null) {
             try {
-                // take screenshot after each test
-                byte[] png = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-                Allure.addAttachment("Screenshot", new ByteArrayInputStream(png));
-
-                // add current URL too
-                Allure.addAttachment("URL", driver.getCurrentUrl());
-            } catch (Exception e) {
-                e.printStackTrace();
+                if (result.getStatus() == ITestResult.FAILURE) {
+                    attachScreenshot("❌ Failure Screenshot");
+                    Allure.addAttachment("URL", driver.getCurrentUrl());
+                }
             } finally {
                 driver.quit();
             }
         }
     }
-
     
+    @BeforeSuite(alwaysRun = true)
+    public void writeAllureEnvironment() throws Exception {
+        // Allure
+        String dir = System.getProperty("allure.results.directory", "target/allure-results");
+        Path resultsDir = Paths.get(dir);
+
+        //create
+        java.nio.file.Files.createDirectories(resultsDir);
+        //  environment.properties
+        Properties p = new Properties();
+        p.setProperty("Browser", "Chrome 128");
+        p.setProperty("OS", "Windows 11");
+        p.setProperty("BaseURL", "https://www.saucedemo.com");
+        p.setProperty("Environment", "QA");
+        p.setProperty("Tester", "Heba AL-Rubaye");
+
+       
+        File envFile = resultsDir.resolve("environment.properties").toFile();
+        try (OutputStream out = new FileOutputStream(envFile)) {
+            p.store(out, "Allure environment");
+        }
+    }
+    private void attachScreenshot(String name) {
+        byte[] png = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment(name, new ByteArrayInputStream(png));
+    }
+
+    public WebDriver getDriver() { return driver; } 
+    
+    static {
+        System.setProperty("allure.results.directory", "target/allure-results");
+    }
+
 }

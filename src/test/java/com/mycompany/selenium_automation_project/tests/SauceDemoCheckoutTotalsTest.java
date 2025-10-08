@@ -7,12 +7,28 @@ import com.mycompany.selenium_automation_project.CheckoutPage;
 import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.ProductsPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
 import org.testng.Assert;
 
 public class SauceDemoCheckoutTotalsTest extends BaseTest {
 	
 
-	 @Test(description = "TC-SD-012: Verify totals & tax on Checkout Overview")
+	@Epic("SauceDemo Automation")
+	@Feature("Checkout")
+	@Story("Verify totals and tax calculation on Checkout Overview")
+	@Severity(SeverityLevel.CRITICAL)
+	@Owner("Heba AL-Rubaye")
+	@Description("Validate that item total, tax, and overall total are correctly calculated and displayed on the checkout overview page.")
+	@Test(priority = 12)
+	
 	 public void TC_SD_012_verifyTotalsAndTaxOnOverview() { 
 		 // 1) Login
 		 LoginPage login = new LoginPage (driver);

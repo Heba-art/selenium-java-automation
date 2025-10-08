@@ -7,9 +7,24 @@ import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.ProductsPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
 public class SauceDemoLogoutProtectionTest extends BaseTest{
 	
-	@Test
+	@Epic("SauceDemo Automation")
+	@Feature("Security")
+	@Story("Logout and access protection")
+	@Severity(SeverityLevel.CRITICAL)
+	@Owner("Heba Al-Rubaye")
+	@Description("Verify that after logout, the user cannot access protected pages like inventory and is redirected back to the login page.")
+	@Test(priority = 9)
+	
     public void TC_SD_009_logoutAndAccessProtection() {
        // Arrange: Login
         LoginPage login = new LoginPage(driver);

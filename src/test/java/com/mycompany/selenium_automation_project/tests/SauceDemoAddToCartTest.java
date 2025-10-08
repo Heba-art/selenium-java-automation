@@ -11,9 +11,24 @@ import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.ProductsPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
 public class SauceDemoAddToCartTest extends BaseTest {
 
-	@Test 
+	@Epic("SauceDemo Automation")
+	@Feature("Cart")
+	@Owner("Heba AL-Rubaye")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Verify that adding a single item updates the cart badge and displays the item inside the cart.") 
+	@Test(priority = 4)
+    @Story("Add a single product to cart")
+	
 	public void TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart() {
 	    final String product = "Sauce Labs Backpack";
 
@@ -44,7 +59,14 @@ public class SauceDemoAddToCartTest extends BaseTest {
 	    Assert.assertTrue(cart.isProductInCart(product), "Cart should contain '" + product + "'.");
 	}
 	
-	@Test 
+	@Epic("SauceDemo Automation")
+	@Feature("Cart")
+	@Story("Remove item from cart")
+	@Severity(SeverityLevel.NORMAL)
+	@Owner("Heba Al-Rubaye")
+	@Description("Verify that removing an item from the cart empties it and hides the cart badge from the header.")
+	@Test(priority = 5)
+	
     public void TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge() {
         final String product = "Sauce Labs Backpack";
 

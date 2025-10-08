@@ -8,9 +8,24 @@ import com.mycompany.selenium_automation_project.ProductDetailsPage;
 import com.mycompany.selenium_automation_project.ProductsPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
 public class SauceDemoProductDetailsTest extends BaseTest {
 
-    @Test
+	@Epic("SauceDemo Automation")
+	@Feature("Products")
+	@Story("View product details and return to product list")
+	@Severity(SeverityLevel.MINOR)
+	@Owner("Heba Al-Rubaye")
+	@Description("Verify that clicking a product name opens its details page, and using the 'Back to Products' button correctly returns to the main product list.")
+	@Test(priority = 10)
+	
     public void TC_SD_010_productDetailsAndBack() {
         final String product = "Sauce Labs Backpack";
           

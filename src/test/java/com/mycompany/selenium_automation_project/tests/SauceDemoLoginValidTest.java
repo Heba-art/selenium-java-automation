@@ -8,9 +8,23 @@ import org.testng.annotations.Test;
 import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
 public class SauceDemoLoginValidTest extends BaseTest {
+	@Epic("SauceDemo Automation")
+	@Feature("Login")
+	@Severity(SeverityLevel.CRITICAL)
+	@Owner("Heba AL-Rubaye")
+	@Description("Verify that a user can successfully log in with valid credentials and navigate to the products page")
+    @Test(priority = 1)
+	@Story("Login with valid credentials")
 	
-    @Test
     public void TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open(baseUrl);

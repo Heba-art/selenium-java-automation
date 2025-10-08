@@ -9,9 +9,24 @@ import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.ProductsPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
 public class SauceDemoCheckoutTest extends BaseTest{
 
-	@Test
+	@Epic("SauceDemo Automation")
+	@Feature("Checkout")
+	@Story("Complete checkout process successfully")
+	@Severity(SeverityLevel.CRITICAL)
+	@Owner("Heba AL-Rubaye")
+	@Description("Verify that a user can complete the full checkout process from cart to the 'Checkout: Complete!' page.")
+	@Test(priority = 6)
+	
     public void TC_SD_006_completeCheckoutFlow() {
 		
 		final String product= "Sauce Labs Backpack";

@@ -10,13 +10,27 @@ import org.testng.annotations.Test;
 import com.mycompany.selenium_automation_project.LoginPage;
 import com.mycompany.selenium_automation_project.base.BaseTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
 
 public class SauceDemoLoginInvalidTest extends BaseTest {
 	
-	@Test
+	@Epic("SauceDemo Automation")
+	@Feature("Login")
+	@Severity(SeverityLevel.NORMAL)
+	@Owner("Heba AL-Rubaye")
+	@Description("Verify that login with invalid password shows the correct error message and stays on login page")
+	@Test(priority = 2)
+    @Story("Login with invalid credentials")
+	
 	public void TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin() {
-		
-		
+	
 		  LoginPage loginPage = new LoginPage(driver);
 		  
 		// 1) Open login
