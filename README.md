@@ -81,11 +81,11 @@ s- selenium-automation-project/
 │           └── util/
 │               └── TestListener.java
 │
-├── allure-results/                 # Allure test result files (JSON, screenshots, etc.)
+
 ├── target/
 │   ├── allure-report/              # Generated Allure HTML reports
 │   ├── surefire-reports/           # Default TestNG reports
-│   └── ...
+│   └── allure-results/             # Allure test result files (JSON, screenshots, etc.)
 │
 ├── pom.xml                         # Maven project configuration
 ├── testng.xml                      # TestNG suite configuration
@@ -137,7 +137,7 @@ allure open target/allure-report
 ```bash
 allure serve target/allure-results
 ```
-###💡 Tip
+### 💡Tip
 You can also use the ready script:
 
 ```bash
