@@ -9,6 +9,8 @@
 ![Status](https://img.shields.io/badge/Status-In%20Progress-lightgrey?style=flat-square)
 ![Report: Allure](https://img.shields.io/badge/Report-Allure-FF69B4?style=flat-square)
 ![Build](https://img.shields.io/badge/Build-Passing-brightgreen?style=flat-square)
+![Allure Report](https://img.shields.io/badge/Allure%20Report-Live-brightgreen)
+![Tests](https://img.shields.io/badge/Tests-Passed%20100%25-success)
 
 
 ![Profile Views](https://komarev.com/ghpvc/?username=heba-art&color=blue)

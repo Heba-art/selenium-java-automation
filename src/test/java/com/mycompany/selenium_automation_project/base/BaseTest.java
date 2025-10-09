@@ -101,12 +101,12 @@ public class BaseTest {
         java.nio.file.Files.createDirectories(resultsDir);
         //  environment.properties
         Properties p = new Properties();
-        p.setProperty("Browser", "Chrome 128");
-        p.setProperty("OS", "Windows 11");
-        p.setProperty("BaseURL", "https://www.saucedemo.com");
-        p.setProperty("Environment", "QA");
         p.setProperty("Tester", "Heba AL-Rubaye");
-
+        p.setProperty("Environment", "QA");
+        p.setProperty("BaseURL", "https://www.saucedemo.com");
+        p.setProperty("Browser", "Chrome 128");
+        p.setProperty("Execution Mode", "Headless");
+        p.setProperty("Build", "GitHub Actions CI");
        
         File envFile = resultsDir.resolve("environment.properties").toFile();
         try (OutputStream out = new FileOutputStream(envFile)) {
