@@ -1,93 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="15" passed="14" failed="1" skipped="0">
+<testng-results ignored="0" total="15" passed="15" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-08T21:39:33 AEDT" name="SauceDemo Suite" finished-at="2025-10-08T21:40:17 AEDT" duration-ms="44109">
+  <suite started-at="2025-10-09T17:50:46 AEDT" name="SauceDemo Full Suite" finished-at="2025-10-09T17:51:39 AEDT" duration-ms="52543">
     <groups>
     </groups>
-    <test started-at="2025-10-08T21:39:33 AEDT" name="All Tests" finished-at="2025-10-08T21:40:17 AEDT" duration-ms="44109">
+    <test started-at="2025-10-09T17:50:46 AEDT" name="Run All Tests by Package" finished-at="2025-10-09T17:51:39 AEDT" duration-ms="52543">
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest">
-        <test-method is-config="true" signature="writeAllureEnvironment()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@6cd24612]" started-at="2025-10-08T21:39:33 AEDT" name="writeAllureEnvironment" finished-at="2025-10-08T21:39:33 AEDT" duration-ms="39" status="PASS">
+        <test-method is-config="true" signature="writeAllureEnvironment()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@65f8f5ae]" started-at="2025-10-09T17:50:46 AEDT" name="writeAllureEnvironment" finished-at="2025-10-09T17:50:46 AEDT" duration-ms="62" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- writeAllureEnvironment -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@6cd24612]" started-at="2025-10-08T21:39:33 AEDT" name="setUp" finished-at="2025-10-08T21:39:35 AEDT" duration-ms="1988" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@65f8f5ae]" started-at="2025-10-09T17:50:46 AEDT" name="setUp" finished-at="2025-10-09T17:50:50 AEDT" duration-ms="3277" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart()[pri:4, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@6cd24612]" started-at="2025-10-08T21:39:35 AEDT" name="TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart" finished-at="2025-10-08T21:39:37 AEDT" duration-ms="2021" status="PASS">
+        <test-method signature="TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart()[pri:4, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@65f8f5ae]" started-at="2025-10-09T17:50:50 AEDT" name="TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart" finished-at="2025-10-09T17:50:52 AEDT" duration-ms="2262" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@6cd24612]" started-at="2025-10-08T21:39:37 AEDT" name="tearDown" finished-at="2025-10-08T21:39:37 AEDT" duration-ms="230" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@65f8f5ae]" started-at="2025-10-09T17:50:52 AEDT" name="tearDown" finished-at="2025-10-09T17:50:52 AEDT" duration-ms="142" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart status=SUCCESS method=SauceDemoAddToCartTest.TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart()[pri:4, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@6cd24612] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart status=SUCCESS method=SauceDemoAddToCartTest.TC_SD_004_addSingleItemToCart_shouldShowBadgeAndItemInCart()[pri:4, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@65f8f5ae] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@6cd24612]" started-at="2025-10-08T21:39:37 AEDT" name="setUp" finished-at="2025-10-08T21:39:38 AEDT" duration-ms="668" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@65f8f5ae]" started-at="2025-10-09T17:50:52 AEDT" name="setUp" finished-at="2025-10-09T17:50:53 AEDT" duration-ms="1082" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge()[pri:5, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@6cd24612]" started-at="2025-10-08T21:39:38 AEDT" name="TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge" finished-at="2025-10-08T21:39:40 AEDT" duration-ms="1697" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Precondition failed expected [2] but found [1]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Precondition failed expected [2] but found [1]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:656)
-at com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest.TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge(SauceDemoAddToCartTest.java:82)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-at org.testng.TestRunner.privateRun(TestRunner.java:739)
-at org.testng.TestRunner.run(TestRunner.java:614)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
-at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
-at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
-at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method signature="TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge()[pri:5, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@65f8f5ae]" started-at="2025-10-09T17:50:53 AEDT" name="TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge" finished-at="2025-10-09T17:50:56 AEDT" duration-ms="2537" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@6cd24612]" started-at="2025-10-08T21:39:40 AEDT" name="tearDown" finished-at="2025-10-08T21:39:40 AEDT" duration-ms="323" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@65f8f5ae]" started-at="2025-10-09T17:50:56 AEDT" name="tearDown" finished-at="2025-10-09T17:50:56 AEDT" duration-ms="167" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge status=FAILURE method=SauceDemoAddToCartTest.TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge()[pri:5, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@6cd24612] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge status=SUCCESS method=SauceDemoAddToCartTest.TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge()[pri:5, instance:com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest@65f8f5ae] output={null}]]]>
               </value>
             </param>
           </params>
@@ -96,19 +51,19 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@5efa40fe]" started-at="2025-10-08T21:39:40 AEDT" name="setUp" finished-at="2025-10-08T21:39:41 AEDT" duration-ms="686" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@c05fddc]" started-at="2025-10-09T17:50:56 AEDT" name="setUp" finished-at="2025-10-09T17:50:57 AEDT" duration-ms="1071" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_008_cartStatePersistsAfterNavigation()[pri:8, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@5efa40fe]" started-at="2025-10-08T21:39:41 AEDT" name="TC_SD_008_cartStatePersistsAfterNavigation" finished-at="2025-10-08T21:39:43 AEDT" duration-ms="1819" status="PASS">
+        <test-method signature="TC_SD_008_cartStatePersistsAfterNavigation()[pri:8, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@c05fddc]" started-at="2025-10-09T17:50:57 AEDT" name="TC_SD_008_cartStatePersistsAfterNavigation" finished-at="2025-10-09T17:50:59 AEDT" duration-ms="2011" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_008_cartStatePersistsAfterNavigation -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@5efa40fe]" started-at="2025-10-08T21:39:43 AEDT" name="tearDown" finished-at="2025-10-08T21:39:43 AEDT" duration-ms="183" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@c05fddc]" started-at="2025-10-09T17:50:59 AEDT" name="tearDown" finished-at="2025-10-09T17:51:00 AEDT" duration-ms="158" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_008_cartStatePersistsAfterNavigation status=SUCCESS method=SauceDemoCartPersistenceTest.TC_SD_008_cartStatePersistsAfterNavigation()[pri:8, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@5efa40fe] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_008_cartStatePersistsAfterNavigation status=SUCCESS method=SauceDemoCartPersistenceTest.TC_SD_008_cartStatePersistsAfterNavigation()[pri:8, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest@c05fddc] output={null}]]]>
               </value>
             </param>
           </params>
@@ -117,19 +72,19 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoCartPersistenceTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoSortTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@1224144a]" started-at="2025-10-08T21:40:14 AEDT" name="setUp" finished-at="2025-10-08T21:40:15 AEDT" duration-ms="673" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@7a6d7e92]" started-at="2025-10-09T17:51:36 AEDT" name="setUp" finished-at="2025-10-09T17:51:37 AEDT" duration-ms="983" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_007_sortByPriceLowToHigh()[pri:7, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@1224144a]" started-at="2025-10-08T21:40:15 AEDT" name="TC_SD_007_sortByPriceLowToHigh" finished-at="2025-10-08T21:40:17 AEDT" duration-ms="1511" status="PASS">
+        <test-method signature="TC_SD_007_sortByPriceLowToHigh()[pri:7, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@7a6d7e92]" started-at="2025-10-09T17:51:37 AEDT" name="TC_SD_007_sortByPriceLowToHigh" finished-at="2025-10-09T17:51:39 AEDT" duration-ms="1976" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_007_sortByPriceLowToHigh -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@1224144a]" started-at="2025-10-08T21:40:17 AEDT" name="tearDown" finished-at="2025-10-08T21:40:17 AEDT" duration-ms="178" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@7a6d7e92]" started-at="2025-10-09T17:51:39 AEDT" name="tearDown" finished-at="2025-10-09T17:51:39 AEDT" duration-ms="158" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_007_sortByPriceLowToHigh status=SUCCESS method=SauceDemoSortTest.TC_SD_007_sortByPriceLowToHigh()[pri:7, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@1224144a] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_007_sortByPriceLowToHigh status=SUCCESS method=SauceDemoSortTest.TC_SD_007_sortByPriceLowToHigh()[pri:7, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortTest@7a6d7e92] output={null}]]]>
               </value>
             </param>
           </params>
@@ -138,19 +93,19 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoSortTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@45385f75]" started-at="2025-10-08T21:39:55 AEDT" name="setUp" finished-at="2025-10-08T21:39:56 AEDT" duration-ms="670" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@7b4c50bc]" started-at="2025-10-09T17:51:15 AEDT" name="setUp" finished-at="2025-10-09T17:51:16 AEDT" duration-ms="1134" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_012_verifyTotalsAndTaxOnOverview()[pri:12, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@45385f75]" started-at="2025-10-08T21:39:56 AEDT" name="TC_SD_012_verifyTotalsAndTaxOnOverview" finished-at="2025-10-08T21:39:58 AEDT" duration-ms="2333" status="PASS">
+        <test-method signature="TC_SD_012_verifyTotalsAndTaxOnOverview()[pri:12, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@7b4c50bc]" started-at="2025-10-09T17:51:16 AEDT" name="TC_SD_012_verifyTotalsAndTaxOnOverview" finished-at="2025-10-09T17:51:18 AEDT" duration-ms="2173" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_012_verifyTotalsAndTaxOnOverview -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@45385f75]" started-at="2025-10-08T21:39:59 AEDT" name="tearDown" finished-at="2025-10-08T21:39:59 AEDT" duration-ms="230" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@7b4c50bc]" started-at="2025-10-09T17:51:18 AEDT" name="tearDown" finished-at="2025-10-09T17:51:18 AEDT" duration-ms="134" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_012_verifyTotalsAndTaxOnOverview status=SUCCESS method=SauceDemoCheckoutTotalsTest.TC_SD_012_verifyTotalsAndTaxOnOverview()[pri:12, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@45385f75] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_012_verifyTotalsAndTaxOnOverview status=SUCCESS method=SauceDemoCheckoutTotalsTest.TC_SD_012_verifyTotalsAndTaxOnOverview()[pri:12, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest@7b4c50bc] output={null}]]]>
               </value>
             </param>
           </params>
@@ -159,19 +114,19 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTotalsTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest@6e2aa843]" started-at="2025-10-08T21:40:06 AEDT" name="setUp" finished-at="2025-10-08T21:40:07 AEDT" duration-ms="677" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest@79207381]" started-at="2025-10-09T17:51:26 AEDT" name="setUp" finished-at="2025-10-09T17:51:27 AEDT" duration-ms="1073" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_009_logoutAndAccessProtection()[pri:9, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest@6e2aa843]" started-at="2025-10-08T21:40:07 AEDT" name="TC_SD_009_logoutAndAccessProtection" finished-at="2025-10-08T21:40:09 AEDT" duration-ms="2379" status="PASS">
+        <test-method signature="TC_SD_009_logoutAndAccessProtection()[pri:9, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest@79207381]" started-at="2025-10-09T17:51:27 AEDT" name="TC_SD_009_logoutAndAccessProtection" finished-at="2025-10-09T17:51:30 AEDT" duration-ms="2639" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_009_logoutAndAccessProtection -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest@6e2aa843]" started-at="2025-10-08T21:40:09 AEDT" name="tearDown" finished-at="2025-10-08T21:40:09 AEDT" duration-ms="175" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest@79207381]" started-at="2025-10-09T17:51:30 AEDT" name="tearDown" finished-at="2025-10-09T17:51:30 AEDT" duration-ms="178" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_009_logoutAndAccessProtection status=SUCCESS method=SauceDemoLogoutProtectionTest.TC_SD_009_logoutAndAccessProtection()[pri:9, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest@6e2aa843] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_009_logoutAndAccessProtection status=SUCCESS method=SauceDemoLogoutProtectionTest.TC_SD_009_logoutAndAccessProtection()[pri:9, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest@79207381] output={null}]]]>
               </value>
             </param>
           </params>
@@ -180,19 +135,19 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoLogoutProtectionTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoLoginValidTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginValidTest@69ee81fc]" started-at="2025-10-08T21:40:04 AEDT" name="setUp" finished-at="2025-10-08T21:40:04 AEDT" duration-ms="654" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginValidTest@60f00693]" started-at="2025-10-09T17:51:23 AEDT" name="setUp" finished-at="2025-10-09T17:51:24 AEDT" duration-ms="800" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts()[pri:1, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginValidTest@69ee81fc]" started-at="2025-10-08T21:40:04 AEDT" name="TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts" finished-at="2025-10-08T21:40:06 AEDT" duration-ms="1266" status="PASS">
+        <test-method signature="TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts()[pri:1, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginValidTest@60f00693]" started-at="2025-10-09T17:51:24 AEDT" name="TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts" finished-at="2025-10-09T17:51:25 AEDT" duration-ms="1531" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginValidTest@69ee81fc]" started-at="2025-10-08T21:40:06 AEDT" name="tearDown" finished-at="2025-10-08T21:40:06 AEDT" duration-ms="193" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginValidTest@60f00693]" started-at="2025-10-09T17:51:26 AEDT" name="tearDown" finished-at="2025-10-09T17:51:26 AEDT" duration-ms="177" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts status=SUCCESS method=SauceDemoLoginValidTest.TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts()[pri:1, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginValidTest@69ee81fc] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts status=SUCCESS method=SauceDemoLoginValidTest.TC_SD_001_loginWithValidCredentials_shouldNavigateToProducts()[pri:1, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginValidTest@60f00693] output={null}]]]>
               </value>
             </param>
           </params>
@@ -201,19 +156,19 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoLoginValidTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoLoginLockedOutTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginLockedOutTest@2d29b4ee]" started-at="2025-10-08T21:40:01 AEDT" name="setUp" finished-at="2025-10-08T21:40:02 AEDT" duration-ms="656" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginLockedOutTest@50378a4]" started-at="2025-10-09T17:51:21 AEDT" name="setUp" finished-at="2025-10-09T17:51:22 AEDT" duration-ms="809" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_003_loginWithLockedOutUser_shouldShowLockedOutError()[pri:3, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginLockedOutTest@2d29b4ee]" started-at="2025-10-08T21:40:02 AEDT" name="TC_SD_003_loginWithLockedOutUser_shouldShowLockedOutError" finished-at="2025-10-08T21:40:03 AEDT" duration-ms="1429" status="PASS">
+        <test-method signature="TC_SD_003_loginWithLockedOutUser_shouldShowLockedOutError()[pri:3, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginLockedOutTest@50378a4]" started-at="2025-10-09T17:51:22 AEDT" name="TC_SD_003_loginWithLockedOutUser_shouldShowLockedOutError" finished-at="2025-10-09T17:51:23 AEDT" duration-ms="1346" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_003_loginWithLockedOutUser_shouldShowLockedOutError -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginLockedOutTest@2d29b4ee]" started-at="2025-10-08T21:40:03 AEDT" name="tearDown" finished-at="2025-10-08T21:40:04 AEDT" duration-ms="208" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginLockedOutTest@50378a4]" started-at="2025-10-09T17:51:23 AEDT" name="tearDown" finished-at="2025-10-09T17:51:23 AEDT" duration-ms="159" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_003_loginWithLockedOutUser_shouldShowLockedOutError status=SUCCESS method=SauceDemoLoginLockedOutTest.TC_SD_003_loginWithLockedOutUser_shouldShowLockedOutError()[pri:3, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginLockedOutTest@2d29b4ee] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_003_loginWithLockedOutUser_shouldShowLockedOutError status=SUCCESS method=SauceDemoLoginLockedOutTest.TC_SD_003_loginWithLockedOutUser_shouldShowLockedOutError()[pri:3, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginLockedOutTest@50378a4] output={null}]]]>
               </value>
             </param>
           </params>
@@ -222,19 +177,19 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoLoginLockedOutTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTest@1c9b0314]" started-at="2025-10-08T21:39:52 AEDT" name="setUp" finished-at="2025-10-08T21:39:53 AEDT" duration-ms="709" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTest@4d15107f]" started-at="2025-10-09T17:51:11 AEDT" name="setUp" finished-at="2025-10-09T17:51:12 AEDT" duration-ms="975" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_006_completeCheckoutFlow()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTest@1c9b0314]" started-at="2025-10-08T21:39:53 AEDT" name="TC_SD_006_completeCheckoutFlow" finished-at="2025-10-08T21:39:55 AEDT" duration-ms="2161" status="PASS">
+        <test-method signature="TC_SD_006_completeCheckoutFlow()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTest@4d15107f]" started-at="2025-10-09T17:51:12 AEDT" name="TC_SD_006_completeCheckoutFlow" finished-at="2025-10-09T17:51:14 AEDT" duration-ms="2191" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_006_completeCheckoutFlow -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTest@1c9b0314]" started-at="2025-10-08T21:39:55 AEDT" name="tearDown" finished-at="2025-10-08T21:39:55 AEDT" duration-ms="181" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTest@4d15107f]" started-at="2025-10-09T17:51:14 AEDT" name="tearDown" finished-at="2025-10-09T17:51:15 AEDT" duration-ms="176" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_006_completeCheckoutFlow status=SUCCESS method=SauceDemoCheckoutTest.TC_SD_006_completeCheckoutFlow()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTest@1c9b0314] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_006_completeCheckoutFlow status=SUCCESS method=SauceDemoCheckoutTest.TC_SD_006_completeCheckoutFlow()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTest@4d15107f] output={null}]]]>
               </value>
             </param>
           </params>
@@ -243,57 +198,57 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368]" started-at="2025-10-08T21:39:43 AEDT" name="setUp" finished-at="2025-10-08T21:39:44 AEDT" duration-ms="672" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0]" started-at="2025-10-09T17:51:00 AEDT" name="setUp" finished-at="2025-10-09T17:51:01 AEDT" duration-ms="1010" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_006_Negative_missingFirstName_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368]" started-at="2025-10-08T21:39:44 AEDT" name="TC_SD_006_Negative_missingFirstName_showsError" finished-at="2025-10-08T21:39:46 AEDT" duration-ms="1965" status="PASS">
+        <test-method signature="TC_SD_006_Negative_missingFirstName_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0]" started-at="2025-10-09T17:51:01 AEDT" name="TC_SD_006_Negative_missingFirstName_showsError" finished-at="2025-10-09T17:51:03 AEDT" duration-ms="2208" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_006_Negative_missingFirstName_showsError -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368]" started-at="2025-10-08T21:39:46 AEDT" name="tearDown" finished-at="2025-10-08T21:39:46 AEDT" duration-ms="182" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0]" started-at="2025-10-09T17:51:03 AEDT" name="tearDown" finished-at="2025-10-09T17:51:03 AEDT" duration-ms="139" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_006_Negative_missingFirstName_showsError status=SUCCESS method=SauceDemoCheckoutNegativeTest.TC_SD_006_Negative_missingFirstName_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_006_Negative_missingFirstName_showsError status=SUCCESS method=SauceDemoCheckoutNegativeTest.TC_SD_006_Negative_missingFirstName_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368]" started-at="2025-10-08T21:39:46 AEDT" name="setUp" finished-at="2025-10-08T21:39:47 AEDT" duration-ms="672" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0]" started-at="2025-10-09T17:51:03 AEDT" name="setUp" finished-at="2025-10-09T17:51:04 AEDT" duration-ms="1220" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_006_Negative_missingLastName_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368]" started-at="2025-10-08T21:39:47 AEDT" name="TC_SD_006_Negative_missingLastName_showsError" finished-at="2025-10-08T21:39:49 AEDT" duration-ms="2179" status="PASS">
+        <test-method signature="TC_SD_006_Negative_missingLastName_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0]" started-at="2025-10-09T17:51:04 AEDT" name="TC_SD_006_Negative_missingLastName_showsError" finished-at="2025-10-09T17:51:07 AEDT" duration-ms="3011" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_006_Negative_missingLastName_showsError -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368]" started-at="2025-10-08T21:39:49 AEDT" name="tearDown" finished-at="2025-10-08T21:39:49 AEDT" duration-ms="188" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0]" started-at="2025-10-09T17:51:07 AEDT" name="tearDown" finished-at="2025-10-09T17:51:08 AEDT" duration-ms="184" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_006_Negative_missingLastName_showsError status=SUCCESS method=SauceDemoCheckoutNegativeTest.TC_SD_006_Negative_missingLastName_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_006_Negative_missingLastName_showsError status=SUCCESS method=SauceDemoCheckoutNegativeTest.TC_SD_006_Negative_missingLastName_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368]" started-at="2025-10-08T21:39:49 AEDT" name="setUp" finished-at="2025-10-08T21:39:50 AEDT" duration-ms="680" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0]" started-at="2025-10-09T17:51:08 AEDT" name="setUp" finished-at="2025-10-09T17:51:09 AEDT" duration-ms="997" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_006_Negative_missingPostalCode_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368]" started-at="2025-10-08T21:39:50 AEDT" name="TC_SD_006_Negative_missingPostalCode_showsError" finished-at="2025-10-08T21:39:52 AEDT" duration-ms="2167" status="PASS">
+        <test-method signature="TC_SD_006_Negative_missingPostalCode_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0]" started-at="2025-10-09T17:51:09 AEDT" name="TC_SD_006_Negative_missingPostalCode_showsError" finished-at="2025-10-09T17:51:11 AEDT" duration-ms="2183" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_006_Negative_missingPostalCode_showsError -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368]" started-at="2025-10-08T21:39:52 AEDT" name="tearDown" finished-at="2025-10-08T21:39:52 AEDT" duration-ms="213" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0]" started-at="2025-10-09T17:51:11 AEDT" name="tearDown" finished-at="2025-10-09T17:51:11 AEDT" duration-ms="179" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_006_Negative_missingPostalCode_showsError status=SUCCESS method=SauceDemoCheckoutNegativeTest.TC_SD_006_Negative_missingPostalCode_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@1f9f6368] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_006_Negative_missingPostalCode_showsError status=SUCCESS method=SauceDemoCheckoutNegativeTest.TC_SD_006_Negative_missingPostalCode_showsError()[pri:6, instance:com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest@25df00a0] output={null}]]]>
               </value>
             </param>
           </params>
@@ -302,19 +257,19 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoCheckoutNegativeTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@f58853c]" started-at="2025-10-08T21:40:12 AEDT" name="setUp" finished-at="2025-10-08T21:40:13 AEDT" duration-ms="659" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@1a4927d6]" started-at="2025-10-09T17:51:33 AEDT" name="setUp" finished-at="2025-10-09T17:51:34 AEDT" duration-ms="893" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_011_sortProductsByNameAToZ()[pri:11, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@f58853c]" started-at="2025-10-08T21:40:13 AEDT" name="TC_SD_011_sortProductsByNameAToZ" finished-at="2025-10-08T21:40:14 AEDT" duration-ms="1417" status="PASS">
+        <test-method signature="TC_SD_011_sortProductsByNameAToZ()[pri:11, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@1a4927d6]" started-at="2025-10-09T17:51:34 AEDT" name="TC_SD_011_sortProductsByNameAToZ" finished-at="2025-10-09T17:51:35 AEDT" duration-ms="1566" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_011_sortProductsByNameAToZ -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@f58853c]" started-at="2025-10-08T21:40:14 AEDT" name="tearDown" finished-at="2025-10-08T21:40:14 AEDT" duration-ms="174" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@1a4927d6]" started-at="2025-10-09T17:51:35 AEDT" name="tearDown" finished-at="2025-10-09T17:51:36 AEDT" duration-ms="188" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_011_sortProductsByNameAToZ status=SUCCESS method=SauceDemoSortByNameAToZTest.TC_SD_011_sortProductsByNameAToZ()[pri:11, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@f58853c] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_011_sortProductsByNameAToZ status=SUCCESS method=SauceDemoSortByNameAToZTest.TC_SD_011_sortProductsByNameAToZ()[pri:11, instance:com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest@1a4927d6] output={null}]]]>
               </value>
             </param>
           </params>
@@ -323,19 +278,19 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoProductDetailsTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoProductDetailsTest@6f36c2f0]" started-at="2025-10-08T21:40:09 AEDT" name="setUp" finished-at="2025-10-08T21:40:10 AEDT" duration-ms="663" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoProductDetailsTest@491b9b8]" started-at="2025-10-09T17:51:30 AEDT" name="setUp" finished-at="2025-10-09T17:51:31 AEDT" duration-ms="1023" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_010_productDetailsAndBack()[pri:10, instance:com.mycompany.selenium_automation_project.tests.SauceDemoProductDetailsTest@6f36c2f0]" started-at="2025-10-08T21:40:10 AEDT" name="TC_SD_010_productDetailsAndBack" finished-at="2025-10-08T21:40:12 AEDT" duration-ms="1603" status="PASS">
+        <test-method signature="TC_SD_010_productDetailsAndBack()[pri:10, instance:com.mycompany.selenium_automation_project.tests.SauceDemoProductDetailsTest@491b9b8]" started-at="2025-10-09T17:51:31 AEDT" name="TC_SD_010_productDetailsAndBack" finished-at="2025-10-09T17:51:33 AEDT" duration-ms="1666" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_010_productDetailsAndBack -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoProductDetailsTest@6f36c2f0]" started-at="2025-10-08T21:40:12 AEDT" name="tearDown" finished-at="2025-10-08T21:40:12 AEDT" duration-ms="185" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoProductDetailsTest@491b9b8]" started-at="2025-10-09T17:51:33 AEDT" name="tearDown" finished-at="2025-10-09T17:51:33 AEDT" duration-ms="139" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_010_productDetailsAndBack status=SUCCESS method=SauceDemoProductDetailsTest.TC_SD_010_productDetailsAndBack()[pri:10, instance:com.mycompany.selenium_automation_project.tests.SauceDemoProductDetailsTest@6f36c2f0] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_010_productDetailsAndBack status=SUCCESS method=SauceDemoProductDetailsTest.TC_SD_010_productDetailsAndBack()[pri:10, instance:com.mycompany.selenium_automation_project.tests.SauceDemoProductDetailsTest@491b9b8] output={null}]]]>
               </value>
             </param>
           </params>
@@ -344,19 +299,19 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoProductDetailsTest -->
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoLoginInvalidTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginInvalidTest@49c90a9c]" started-at="2025-10-08T21:39:59 AEDT" name="setUp" finished-at="2025-10-08T21:39:59 AEDT" duration-ms="677" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginInvalidTest@5884a914]" started-at="2025-10-09T17:51:18 AEDT" name="setUp" finished-at="2025-10-09T17:51:19 AEDT" duration-ms="1187" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin()[pri:2, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginInvalidTest@49c90a9c]" started-at="2025-10-08T21:39:59 AEDT" name="TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin" finished-at="2025-10-08T21:40:01 AEDT" duration-ms="1493" status="PASS">
+        <test-method signature="TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin()[pri:2, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginInvalidTest@5884a914]" started-at="2025-10-09T17:51:19 AEDT" name="TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin" finished-at="2025-10-09T17:51:21 AEDT" duration-ms="1227" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginInvalidTest@49c90a9c]" started-at="2025-10-08T21:40:01 AEDT" name="tearDown" finished-at="2025-10-08T21:40:01 AEDT" duration-ms="198" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginInvalidTest@5884a914]" started-at="2025-10-09T17:51:21 AEDT" name="tearDown" finished-at="2025-10-09T17:51:21 AEDT" duration-ms="122" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin status=SUCCESS method=SauceDemoLoginInvalidTest.TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin()[pri:2, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginInvalidTest@49c90a9c] output={null}]]]>
+                <![CDATA[[TestResult name=TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin status=SUCCESS method=SauceDemoLoginInvalidTest.TC_SD_002_loginWithInvalidPassword_shouldShowErrorAndStayOnLogin()[pri:2, instance:com.mycompany.selenium_automation_project.tests.SauceDemoLoginInvalidTest@5884a914] output={null}]]]>
               </value>
             </param>
           </params>
@@ -364,6 +319,6 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoLoginInvalidTest -->
-    </test> <!-- All Tests -->
-  </suite> <!-- SauceDemo Suite -->
+    </test> <!-- Run All Tests by Package -->
+  </suite> <!-- SauceDemo Full Suite -->
 </testng-results>

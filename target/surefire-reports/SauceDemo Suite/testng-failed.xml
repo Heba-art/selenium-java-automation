@@ -5,7 +5,7 @@
     <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     <listener class-name="com.mycompany.selenium_automation_project.util.TestListener"/>
   </listeners>
-  <test thread-count="5" name="All Tests(failed)" verbose="0">
+  <test thread-count="5" name="Run TC4 and TC5 (single class)(failed)" verbose="0">
     <classes>
       <class name="com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest">
         <methods>
@@ -16,5 +16,5 @@
         </methods>
       </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest -->
     </classes>
-  </test> <!-- All Tests(failed) -->
+  </test> <!-- Run TC4 and TC5 (single class)(failed) -->
 </suite> <!-- Failed suite [SauceDemo Suite] -->

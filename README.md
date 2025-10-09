@@ -1,16 +1,19 @@
 # Selenium Automation Project – SauceDemo
 
-![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=java&logoColor=white)
-![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white)
-![TestNG](https://img.shields.io/badge/TestNG-FF6F00?style=flat-square)
-![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=apache-maven&logoColor=white)
-![Pattern: POM](https://img.shields.io/badge/Pattern-Page%20Object%20Model-1E90FF?style=flat-square)
-![Platform](https://img.shields.io/badge/Platform-SauceDemo-FF4500?style=flat-square)
-![Status](https://img.shields.io/badge/Status-In%20Progress-lightgrey?style=flat-square)
-![Report: Allure](https://img.shields.io/badge/Report-Allure-FF69B4?style=flat-square)
-![Build](https://img.shields.io/badge/Build-Passing-brightgreen?style=flat-square)
-![Allure Report](https://img.shields.io/badge/Allure%20Report-Live-brightgreen)
-![Tests](https://img.shields.io/badge/Tests-Passed%20100%25-success)
+# 🧪 Selenium Java Automation | TestNG | Allure | CI/CD
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Language-Java-007396?style=flat&logo=openjdk&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Framework-TestNG-orange?style=flat&logo=testng&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Build-Maven-C71A36?style=flat&logo=apachemaven&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Pattern-Page%20Object%20Model-blue?style=flat"/>
+  <img src="https://img.shields.io/badge/Site-SauceDemo-ff6c00?style=flat&logo=saucelabs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Status-Passing-brightgreen?style=flat"/>
+  <img src="https://img.shields.io/badge/Report-Allure-ff69b4?style=flat&logo=allure&logoColor=white"/>
+  <a href="https://heba-art.github.io/selenium-java-automation/">
+    <img src="https://img.shields.io/badge/Allure%20Report-Live-success?style=flat&logo=githubactions&logoColor=white"/>
+  </a>
+</p>
 
 
 ![Profile Views](https://komarev.com/ghpvc/?username=heba-art&color=blue)

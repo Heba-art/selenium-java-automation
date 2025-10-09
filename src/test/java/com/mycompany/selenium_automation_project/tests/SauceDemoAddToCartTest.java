@@ -37,27 +37,34 @@ public class SauceDemoAddToCartTest extends BaseTest {
 	    login.open(baseUrl);
 	    login.login("standard_user", "secret_sauce");
 
-	    // 2) Products page ready
+	    // 2) Wait for the Products page to fully load
 	    ProductsPage products = new ProductsPage(driver);
 	    products.waitUntilLoaded();
 	    Assert.assertTrue(products.isLoaded(), "Products page should be loaded after login.");
 
-	    // 3) Add item (robust add with waits/scroll)
+	    // 3) Add the selected product to the cart
 	    products.addProductToCart(product);
-	    By removeBtn = By.id("remove-sauce-labs-backpack");
+
+	    // Wait until the "Remove" button appears to confirm the item was added
+	    By removeBtn = By.cssSelector(
+	            "button#remove-sauce-labs-backpack, button[data-test='remove-sauce-labs-backpack']");
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(removeBtn));
 
+	    // 4) Verify the cart badge equals 1
+	    By badge = By.cssSelector(".shopping_cart_badge");
+	    wait.until(ExpectedConditions.or(
+	            ExpectedConditions.visibilityOfElementLocated(badge),
+	            ExpectedConditions.textToBePresentInElementLocated(badge, "1")
+	    ));
+	    Assert.assertEquals(products.getCartBadgeText(), "1", "Cart badge should show 1 after adding one item.");
 
-	    // 4) Verify badge = 1
-	    By badge = By.className("shopping_cart_badge");
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(badge));
-	    Assert.assertEquals(products.getCartBadgeText(), "1", "Cart badge should be 1 after adding one item.");
-
-	    // 5) Open cart and verify item exists
+	    // 5) Open the cart and verify the product appears inside
 	    CartPage cart = products.openCart();
+	    wait.until(ExpectedConditions.urlContains("/cart.html"));
 	    wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("title"), "Your Cart"));
-	    Assert.assertTrue(cart.isProductInCart(product), "Cart should contain '" + product + "'.");
+	    Assert.assertTrue(cart.isProductInCart(product), "Cart should contain '" + product + "' after adding it.");
 	}
+
 	
 	@Epic("SauceDemo Automation")
 	@Feature("Cart")
@@ -67,35 +74,55 @@ public class SauceDemoAddToCartTest extends BaseTest {
 	@Description("Verify that removing an item from the cart empties it and hides the cart badge from the header.")
 	@Test(priority = 5)
 	
-    public void TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge() {
-        final String product = "Sauce Labs Backpack";
+	public void TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge() {
+	    final String product = "Sauce Labs Backpack";
 
-        // 1. Login
-        LoginPage login = new LoginPage(driver);
-        login.open(baseUrl);
-        login.login("standard_user", "secret_sauce");
+	    // 1) Login
+	    LoginPage login = new LoginPage(driver);
+	    login.open(baseUrl);
+	    login.login("standard_user", "secret_sauce");
 
-        // 2. Go to products page and add one item
-        ProductsPage products = new ProductsPage(driver);
-        products.waitUntilLoaded();
-        products.addProductToCart(product); 
-        Assert.assertEquals(products.getCartBadgeText(), "1", "Precondition failed");
+	    // 2) Products page: add one item
+	    ProductsPage products = new ProductsPage(driver);
+	    products.waitUntilLoaded();
+	    products.addProductToCart(product);
 
-        // 3. Open the cart page
-        CartPage cart = products.openCart();
-        Assert.assertTrue(cart.isProductInCart(product), "Precondition failed");
-        cart.removeProductFromCart(product);
+	    // Wait for the "Remove" button and ensure the badge equals 1
+	    By removeBtn = By.cssSelector(
+	            "button#remove-sauce-labs-backpack, button[data-test='remove-sauce-labs-backpack']");
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(removeBtn));
+	    wait.until(d -> "1".equals(products.getCartBadgeText())); // prevents timing issues
+	    Assert.assertEquals(products.getCartBadgeText(), "1", "Precondition failed: badge should be 1");
 
-        // Verify
-        Assert.assertFalse(cart.isProductInCart(product), "Item should be removed from cart");
-        products.waitForBadgeToDisappear();
-        String badge = products.getCartBadgeText();
-        Assert.assertTrue(badge == null || badge.isEmpty(), "Cart badge should be empty after removal");
+	    // 3) Open the cart and wait for navigation to /cart.html
+	    CartPage cart = products.openCart();
+	    wait.until(ExpectedConditions.urlContains("/cart.html"));
+	    Assert.assertTrue(cart.isProductInCart(product), "Precondition failed: item must be in cart");
 
+	    // 4) Remove the product
+	    cart.removeProductFromCart(product);
 
-	
+	    // Wait for the badge to disappear (no badge elements remaining)
+	    By badge = By.cssSelector(".shopping_cart_badge");
+	    wait.until(ExpectedConditions.numberOfElementsToBe(badge, 0));
+
+	    // Wait for the product row to disappear (no need to modify CartPage)
+	    By rowLocator = By.xpath("//div[contains(@class,'cart_item')]"
+	            + "[.//div[contains(@class,'inventory_item_name') and normalize-space()='" + product + "']]");
+	    wait.until(ExpectedConditions.or(
+	            ExpectedConditions.invisibilityOfElementLocated(rowLocator),
+	            ExpectedConditions.numberOfElementsToBe(rowLocator, 0)
+	    ));
+
+	    // 5) Verify the product is no longer in the cart
+	    Assert.assertFalse(cart.isProductInCart(product), "Item should be removed from cart");
+
+	    // 6) Final verification: badge text should be null or empty
+	    String badgeText = products.getCartBadgeText();
+	    Assert.assertTrue(badgeText == null || badgeText.isEmpty(),
+	            "Cart badge should be empty after removal");
 	}
-	
+
 }
 
 

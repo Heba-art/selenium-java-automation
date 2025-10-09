@@ -48,7 +48,7 @@ public class SauceDemoCheckoutNegativeTest extends BaseTest {
 		seedCartWithOneItem(product);
 		
 		// Go to Checkout
-		CartPage cart = new CartPage (driver, wait);
+		CartPage cart = new CartPage (driver);
 		CheckoutPage checkout = cart.clickCheckout();
 		checkout.waitUntilInfoLoaded();
 		// Leave First Name empty; fill others
@@ -71,7 +71,7 @@ public class SauceDemoCheckoutNegativeTest extends BaseTest {
 		final String product = "Sauce Labs Backpack";
         seedCartWithOneItem(product);
         
-        CartPage cart = new CartPage(driver, wait);
+        CartPage cart = new CartPage(driver);
         CheckoutPage checkout = cart.clickCheckout();
         checkout.waitUntilInfoLoaded();
 
@@ -101,7 +101,7 @@ public class SauceDemoCheckoutNegativeTest extends BaseTest {
         final String product = "Sauce Labs Backpack";
         seedCartWithOneItem(product);
 
-        CartPage cart = new CartPage(driver, wait);
+        CartPage cart = new CartPage(driver);
         CheckoutPage checkout = cart.clickCheckout();
         checkout.waitUntilInfoLoaded();
 

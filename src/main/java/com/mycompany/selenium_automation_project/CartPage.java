@@ -2,7 +2,10 @@
 package com.mycompany.selenium_automation_project;
 
 
+import java.time.Duration;
+import java.util.List;
 import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,18 +14,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CartPage {
+import com.mycompany.selenium_automation_project.base.BasePage;
 
-	private final WebDriver driver;
+import io.netty.handler.timeout.TimeoutException;
+
+public class CartPage extends BasePage {
+
+	
 	private final By title= By.className("title"); // "Your Cart"
-	private WebDriverWait wait;
+
 	
 	private final By checkoutBtn = By.id("checkout");
 	private final By continueShoppingBtn = By.id("continue-shopping");
 	
-	public CartPage(WebDriver driver,WebDriverWait wait) {
-        this.driver = driver;
-        this.wait = wait;
+	public CartPage(WebDriver driver) {
+        super(driver);
     }
 	
 	public void waitUntilLoaded() {
@@ -43,35 +49,52 @@ public class CartPage {
     }
  
     public void removeProductFromCart(String productName) {
-        // Row locator: full cart row that contains the product name
-        By rowLocator = cartItemRowByName(productName);
+        // Row that contains the specific product name
+        By rowLocator = By.xpath("//div[@class='cart_item' and " +
+                ".//div[@class='inventory_item_name' and normalize-space()='" + productName + "']]");
 
-        // 1) Get the row before removal
-        WebElement row = wait.until(ExpectedConditions.visibilityOfElementLocated(rowLocator));
+        // Remove button INSIDE the row (covers id / data-test / old .cart_button)
+        By removeInRow = By.cssSelector("button[id^='remove-'], button[data-test^='remove-'], button.cart_button");
 
-        // 2) Find the "Remove" button inside the same row (robust selectors)
-        WebElement removeBtn;
-        try {
-            removeBtn = row.findElement(By.cssSelector("button.cart_button"));
-        } catch (NoSuchElementException e) {
-            removeBtn = row.findElement(By.xpath(".//button[contains(@id,'remove') or contains(@data-test,'remove') or normalize-space()='Remove']"));
+        // Try up to 3 times in case the first click is ignored
+        for (int attempt = 0; attempt < 3; attempt++) {
+            // 1) Wait for the row to be visible
+            WebElement row = wait.until(ExpectedConditions.visibilityOfElementLocated(rowLocator));
+
+            // 2) Find the remove button inside the same row
+            WebElement removeBtn = row.findElement(removeInRow);
+
+            // 3) Scroll into view (headless/CI)
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", removeBtn);
+
+            // 4) Click safely (normal -> JS fallback)
+            try {
+                wait.until(ExpectedConditions.elementToBeClickable(removeBtn)).click();
+            } catch (Exception e) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", removeBtn);
+            }
+
+            // 5) Short confirmation wait: row gone / invisible / count decreased
+            boolean gone = false;
+            try {
+                WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
+                shortWait.until(ExpectedConditions.or(
+                        ExpectedConditions.stalenessOf(row),
+                        ExpectedConditions.invisibilityOfElementLocated(rowLocator),
+                        ExpectedConditions.numberOfElementsToBe(rowLocator, 0)
+                ));
+                gone = true;
+            } catch (TimeoutException ignore) {
+                // will retry
+            }
+
+            if (gone) break; // success
         }
 
-        // 3) Click it (use JS as a fallback if intercepted)
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(removeBtn)).click();
-        } catch (ElementClickInterceptedException ex) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", removeBtn);
-        }
-
-        // 4) Post-click verification: wait until the row is gone/hidden or the count decreases
-        int before = driver.findElements(rowLocator).size();
-        wait.until(ExpectedConditions.or(
-                ExpectedConditions.stalenessOf(row),
-                ExpectedConditions.invisibilityOfElementLocated(rowLocator),
-                ExpectedConditions.numberOfElementsToBe(rowLocator, Math.max(0, before - 1))
-        ));
+        // 6) Final mandatory wait: row must be gone
+        wait.until(ExpectedConditions.numberOfElementsToBe(rowLocator, 0));
     }
+
     public CheckoutPage clickCheckout() {
     	wait.until(ExpectedConditions.elementToBeClickable(checkoutBtn)).click();
     	CheckoutPage checkout = new CheckoutPage (driver, wait);
