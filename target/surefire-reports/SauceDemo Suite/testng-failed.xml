@@ -7,14 +7,14 @@
   </listeners>
   <test thread-count="5" name="All Tests(failed)" verbose="0">
     <classes>
-      <class name="com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest">
+      <class name="com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest">
         <methods>
           <include name="writeAllureEnvironment"/>
-          <include name="TC_SD_011_sortProductsByNameAToZ"/>
+          <include name="TC_SD_005_removeItemFromCart_shouldEmptyCartAndHideBadge"/>
           <include name="setUp"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoSortByNameAToZTest -->
+      </class> <!-- com.mycompany.selenium_automation_project.tests.SauceDemoAddToCartTest -->
     </classes>
   </test> <!-- All Tests(failed) -->
 </suite> <!-- Failed suite [SauceDemo Suite] -->

@@ -46,7 +46,14 @@ public class BaseTest {
         prefs.put("autofill.credit_card_enabled", false);            // stop Autofill cards
         options.setExperimentalOption("prefs", prefs);
 
-        // 2) additional 
+        // 2) additional
+        options.addArguments("--headless=new");                  
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--user-data-dir=/tmp/chrome-profile-" + System.currentTimeMillis());
+        options.addArguments("--window-size=1920,1080");
         options.addArguments("--disable-save-password-bubble");
         options.addArguments("--disable-notifications");
         options.addArguments("--incognito");         // optional
