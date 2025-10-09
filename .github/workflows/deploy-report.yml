@@ -1,69 +1,52 @@
 name: Maven Tests with Allure Report
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch: {}  
+        push:
+                branches: [ "main" ]
+        pull_request:
+                branches: [ "main" ]
+        workflow_dispatch: {}
 
 permissions:
-  contents: write
+        contents: write
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+        test:
+                runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+                steps:
+                        - name: Checkout repository
+                          uses: actions/checkout@v4
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '17'
+                        - name: Set up JDK 17
+                          uses: actions/setup-java@v4
+                          with:
+                                distribution: 'zulu'
+                                java-version: '17'
 
-      - name: Cache Maven packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+                        - name: Cache Maven packages
+                          uses: actions/cache@v4
+                          with:
+                                path: ~/.m2/repository
+                                key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+                                restore-keys: |
+                                        ${{ runner.os }}-maven-
 
-      - name: Run tests
-        run: mvn -B clean test
+                        - name: Install Chrome
+                          run: |
+                                sudo apt-get update
+                                sudo apt-get install -y google-chrome-stable
+                                google-chrome --version
 
-      #(Optional and correct) Show what's inside target to make sure allure-results is present
-      - name: Debug list target
-        if: always()
-        run: |
-          echo "--- target content ---"
-          ls -la target || true
-          echo "--- allure-results content ---"
-          ls -la target/allure-results || true
+                        - name: Run tests
+                          run: mvn -B clean test
 
-      - name: Load Allure history
-        if: always()
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: gh-pages
-        continue-on-error: true
+                        - name: Debug list target
+                          if: always()
+                          run: |
+                                echo "--- target content ---"
+                                ls -la target || true
+                                echo "--- allure-results content ---"
+                                ls -la target/allure-results || true
 
-      - name: Generate Allure report
-        if: always()
-        uses: simple-elf/allure-report-action@v1.13
-        with:
-          gh_pages: gh-pages
-          allure_history: allure-history
-          allure_results: target/allure-results
-
-      - name: Deploy report to gh-pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-history
+                        - name: Load Allure hist
