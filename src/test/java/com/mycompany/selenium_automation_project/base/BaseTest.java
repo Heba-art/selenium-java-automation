@@ -47,20 +47,31 @@ public class BaseTest {
         options.setExperimentalOption("prefs", prefs);
 
         // 2) additional
-        options.addArguments("--headless=new");                    // Works without a GUI on GitHub
+     // ✅ Always run Chrome in headless mode on GitHub Actions
+        options.addArguments("--headless=new");
+
+        // ✅ Prevent common GitHub container issues
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+
+        // ✅ General stability and consistency settings
         options.addArguments("--disable-gpu");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-popup-blocking");
         options.addArguments("--window-size=1920,1080");
-        // Assign a unique temporary folder to avoid session conflicts.
-        options.addArguments("--user-data-dir=/tmp/" + System.currentTimeMillis());
+
+        // ✅ Create a unique temporary user data directory each run
+        options.addArguments("--user-data-dir=/tmp/chrome-" + System.currentTimeMillis());
+
+        // ✅ Prevent password/autofill popups
+        options.setExperimentalOption("prefs", Map.of(
+            "credentials_enable_service", false,
+            "profile.password_manager_enabled", false
+        ));
 
         // 3) Create a WebDriver with options only (once!)
         driver = new ChromeDriver(options);
         driver.manage().deleteAllCookies();
-        driver.manage().window().maximize();
 
         // 4) WebDriverWait بالـ DEFAULT_TIMEOUT
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
