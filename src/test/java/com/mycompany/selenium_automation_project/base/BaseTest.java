@@ -47,15 +47,15 @@ public class BaseTest {
         options.setExperimentalOption("prefs", prefs);
 
         // 2) additional
-        options.addArguments("--headless=new");
+        options.addArguments("--headless=new");                    // Works without a GUI on GitHub
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--user-data-dir=/tmp/chrome-profile-" + System.currentTimeMillis());
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("--disable-save-password-bubble");
+        options.addArguments("--disable-gpu");
         options.addArguments("--disable-notifications");
-        options.addArguments("--incognito");         // optional
-        options.addArguments("--start-maximized");
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--window-size=1920,1080");
+        // Assign a unique temporary folder to avoid session conflicts.
+        options.addArguments("--user-data-dir=/tmp/" + System.currentTimeMillis());
 
         // 3) Create a WebDriver with options only (once!)
         driver = new ChromeDriver(options);
