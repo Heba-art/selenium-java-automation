@@ -1,48 +1,68 @@
-# اسم الـ Workflow الذي سيظهر في تبويب Actions
-name: Deploy Allure Report to GitHub Pages
+name: Maven Tests with Allure Report
 
-# المشغل: هذا الـ Workflow سيعمل عند كل عملية push إلى الفرع الرئيسي
 on:
   push:
-    branches:
-      - main  #  أو 'master' حسب اسم الفرع الرئيسي لديك
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
 
 jobs:
-  build-and-deploy:
-    # سيتم تشغيل المهمة على أحدث إصدار من Ubuntu متوفر لدى GitHub
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      # الخطوة 1: سحب كود المشروع إلى بيئة العمل
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # الخطوة 2: إعداد بيئة Java JDK
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '11' # يمكنك تغيير هذا ليتوافق مع إصدار مشروعك
+          distribution: 'zulu'
+          java-version: '17'
 
-      # الخطوة 3: تثبيت Allure CLI في بيئة العمل
-      - name: Install Allure CLI
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Run tests
+        run: mvn -B clean test
+
+      #(Optional and correct) Show what's inside target to make sure allure-results is present
+      - name: Debug list target
+        if: always()
         run: |
-          sudo wget https://github.com/allure-framework/allure2/releases/download/2.29.0/allure-2.29.0.tgz
-          sudo tar -zxvf allure-2.29.0.tgz -C /opt/
-          sudo ln -s /opt/allure-2.29.0/bin/allure /usr/bin/allure
-          allure --version
+          echo "--- target content ---"
+          ls -la target || true
+          echo "--- allure-results content ---"
+          ls -la target/allure-results || true
 
-      # الخطوة 4: تشغيل اختبارات Maven لتوليد النتائج
-      - name: Run Maven tests
-        run: mvn clean test
+      - name: Load Allure history
+        if: always()
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+        continue-on-error: true
 
-      # الخطوة 5: توليد تقرير Allure بصيغة HTML من النتائج
       - name: Generate Allure report
-        run: allure generate allure-results -o allure-report --clean
+        if: always()
+        uses: simple-elf/allure-report-action@v1.13
+        with:
+          gh_pages: gh-pages
+          allure_history: allure-history
+          allure_results: target/allure-results
 
-      # الخطوة 6: نشر التقرير على فرع gh-pages
-      # هذا الإجراء يقوم بكل العمل اليدوي (commit & push) تلقائياً
-      - name: Deploy to GitHub Pages
+      - name: Deploy report to gh-pages
+        if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
+          publish_branch: gh-pages
+          publish_dir: allure-history
