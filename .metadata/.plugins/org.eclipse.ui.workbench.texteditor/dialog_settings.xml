@@ -3,6 +3,10 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<section name="java.lang.Class">
 		<list key="findhistory">
+			<item value="getItemTotal"/>
+			<item value="title"/>
+			<item value="&quot;title&quot;"/>
+			<item value=".className(&quot;title&quot;)"/>
 			<item value="presenceOfElementLocated"/>
 			<item value="click"/>
 			<item value="io.qameta.allure"/>

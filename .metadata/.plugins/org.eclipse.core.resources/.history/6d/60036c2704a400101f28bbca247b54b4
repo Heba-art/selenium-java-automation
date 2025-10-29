@@ -1,6 +1,0 @@
-Browser=Chrome 128
-OS=Windows 11
-BaseURL=https://www.saucedemo.com
-Tester=Heba Al-Rubaye
-Environment=QA
-Build=1.0.0
