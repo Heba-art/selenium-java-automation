@@ -1,0 +1,58 @@
+package com.mycompany.selenium_automation_project.tests;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.mycompany.selenium_automation_project.LoginPage;
+import com.mycompany.selenium_automation_project.ProductsPage;
+import com.mycompany.selenium_automation_project.base.BaseTest;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
+public class SauceDemoLogoutProtectionTest extends BaseTest{
+	
+	@Epic("SauceDemo Automation")
+	@Feature("Security")
+	@Story("Logout and access protection")
+	@Severity(SeverityLevel.CRITICAL)
+	@Owner("Heba Al-Rubaye")
+	@Description("Verify that after logout, the user cannot access protected pages like inventory and is redirected back to the login page.")
+	@Test(priority = 9)
+	
+    public void TC_SD_009_logoutAndAccessProtection() {
+
+		LoginPage login = new LoginPage(driver);
+	    login.open(baseUrl);
+	    login.login("standard_user", "secret_sauce");
+
+	    ProductsPage products = new ProductsPage(driver);
+	    products.waitUntilLoaded();
+
+	    // Logout
+	    products.clickLogout();
+	    // Wait longer for redirect to login
+	    new WebDriverWait(driver, Duration.ofSeconds(20))
+	            .until(ExpectedConditions.urlContains("saucedemo.com/"));
+	    new WebDriverWait(driver, Duration.ofSeconds(20))
+	            .until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
+
+	    Assert.assertTrue(login.isLoaded(), "Should be redirected to login page");
+
+	    // Try direct access to inventory
+	    driver.get(baseUrl + "inventory.html");
+	    new WebDriverWait(driver, Duration.ofSeconds(20))
+	            .until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
+	    Assert.assertTrue(login.isLoaded(), "Access blocked after logout");
+	}
+}

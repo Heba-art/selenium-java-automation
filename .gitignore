@@ -1,17 +1,1 @@
-# build outputs
-target/
-**/allure-results/
-**/allure-report/
-
-# IDE
-.metadata/
-.project
-.classpath
-.settings/
-.idea/
-*.iml
-
-# OS files
-Thumbs.db
-.DS_Store
-# Ignore build and IDE files 
+/target/
