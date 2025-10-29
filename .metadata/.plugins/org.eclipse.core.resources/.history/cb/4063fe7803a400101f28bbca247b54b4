@@ -1,0 +1,33 @@
+package com.mycompany.selenium_automation_project.util;
+
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+import java.io.ByteArrayInputStream;
+
+public class TestListener implements ITestListener {
+
+    @Override
+    public void onTestFailure(ITestResult result) {
+        WebDriver driver = ((com.mycompany.selenium_automation_project.base.BaseTest) result.getInstance()).getDriver();
+        try {
+            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Failure Screenshot", new ByteArrayInputStream(screenshot));
+            Allure.step("❌ Test failed: " + result.getName());
+        } catch (Exception e) {
+            System.out.println("⚠️ Failed to capture screenshot: " + e.getMessage());
+        }
+    }
+
+    @Override public void onTestStart(ITestResult result) {}
+    @Override public void onTestSuccess(ITestResult result) {}
+    @Override public void onTestSkipped(ITestResult result) {}
+    @Override public void onTestFailedButWithinSuccessPercentage(ITestResult result) {}
+    @Override public void onStart(ITestContext context) {}
+    @Override public void onFinish(ITestContext context) {}
+}

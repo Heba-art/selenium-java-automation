@@ -1,0 +1,26 @@
+@echo off
+setlocal ENABLEEXTENSIONS
+
+REM ===== 0) Define paths =====
+set RES=target\allure-results
+set REP=target\allure-report
+
+REM ===== 1) Run Maven tests (TestNG) =====
+call mvn -q test
+IF ERRORLEVEL 1 (
+  echo Tests failed (Maven build failure). Still generating report for debugging...
+)
+
+REM ===== 2) If previous report exists, copy its history to new results =====
+IF EXIST "%REP%\history" (
+  echo Copying history from previous report to new results...
+  xcopy /E /I /Y "%REP%\history" "%RES%\history" >nul
+)
+
+REM ===== 3) Generate new Allure report (using --clean to clear previous output only) =====
+allure generate "%RES%" -o "%REP%" --clean
+
+REM ===== 4) Open the generated report in browser =====
+allure open "%REP%"
+
+endlocal

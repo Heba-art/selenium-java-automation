@@ -1,0 +1,44 @@
+@echo off
+setlocal ENABLEDELAYEDEXPANSION
+
+REM ==== Paths (relative to project root) ====
+set "RESULTS=target\allure-results"
+set "REPORT=target\allure-report"
+
+echo.
+echo [1/4] Running tests with Maven...
+mvn -B clean test
+if errorlevel 1 (
+  echo.
+  echo [ERROR] Maven tests failed. Aborting.
+  exit /b 1
+)
+
+echo.
+echo [2/4] Preserving Allure history for TREND (if any)...
+if exist "%REPORT%\history" (
+  if not exist "%RESULTS%" mkdir "%RESULTS%"
+  xcopy /E /I /Y "%REPORT%\history" "%RESULTS%\history" >nul
+  echo   - history copied from "%REPORT%\history" to "%RESULTS%\history"
+) else (
+  echo   - no previous history found (first run after clean)
+)
+
+echo.
+echo [3/4] Generating Allure report...
+allure generate "%RESULTS%" -o "%REPORT%" --clean
+if errorlevel 1 (
+  echo.
+  echo [ERROR] Allure generation failed. Make sure Allure CLI is installed and on PATH.
+  echo         https://docs.qameta.io/allure/#_installing_a_commandline
+  exit /b 1
+)
+
+echo.
+echo [4/4] Opening report...
+allure open "%REPORT%"
+
+echo.
+echo Done. Press any key to exit.
+pause >nul
+endlocal

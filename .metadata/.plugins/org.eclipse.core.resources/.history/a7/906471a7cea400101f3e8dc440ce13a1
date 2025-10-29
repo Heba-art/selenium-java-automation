@@ -1,0 +1,5 @@
+package com.mycompany.selenium_automation_project.base;
+
+public class BasePage {
+
+}

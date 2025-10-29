@@ -1,0 +1,74 @@
+@echo off
+setlocal enabledelayedexpansion
+title Allure Runner
+
+REM --- Move to project root (this .bat location) ---
+cd /d "%~dp0"
+
+REM --- Variables ---
+set RESULTS=target\allure-results
+set REPORT=target\allure-report
+
+echo.
+echo === 1) Running tests with Maven (TestNG) =================================
+mvn -q -DskipTests=false test
+if errorlevel 1 (
+  echo [ERROR] Maven test phase failed. Aborting.
+  goto :end
+)
+
+echo.
+echo === 2) Checking Allure CLI ===============================================
+allure --version >nul 2>&1
+if errorlevel 1 (
+  echo [ERROR] Allure CLI is not installed or not in PATH.
+  echo         Install it and re-run:
+  echo         winget install QametaSoftware.Allure
+  echo         or choco install allure (if you use Chocolatey)
+  goto :end
+)
+
+echo.
+echo === 3) Verifying results folder ==========================================
+if not exist "%RESULTS%" (
+  echo [ERROR] "%RESULTS%" does not exist.
+  echo         Did TestNG write results elsewhere? Expected maven-surefire to
+  echo         set -Dallure.results.directory=%RESULTS%.
+  echo         Contents of target\:
+  dir /b target
+  goto :end
+)
+
+dir /b "%RESULTS%\*.json" >nul 2>&1
+if errorlevel 1 (
+  echo [ERROR] No Allure result files (*.json) found in "%RESULTS%".
+  echo         Something prevented Allure from writing results.
+  echo         Contents of "%RESULTS%":
+  dir /b "%RESULTS%"
+  goto :end
+)
+
+echo.
+echo === 4) Preserving trend history ==========================================
+if exist "%REPORT%\history" (
+  echo Copying existing history from "%REPORT%\history" to "%RESULTS%\history" ...
+  robocopy "%REPORT%\history" "%RESULTS%\history" /E >nul
+)
+
+echo.
+echo === 5) Generating report ==================================================
+allure generate "%RESULTS%" -o "%REPORT%" --clean
+if errorlevel 1 (
+  echo [ERROR] Allure generate failed.
+  goto :end
+)
+
+echo.
+echo === 6) Opening report =====================================================
+allure open "%REPORT%"
+echo (If the server prints "Press Ctrl+C to exit", leave this window open.)
+goto :end
+
+:end
+echo.
+pause

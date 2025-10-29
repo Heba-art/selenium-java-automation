@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="SauceDemo Suite" verbose="1" parallel="false">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+        <listener class-name="com.mycompany.selenium_automation_project.util.TestListener"/>
+    </listeners>
+
+    <test name="All Tests">
+        <packages>
+            <package name="com.mycompany.selenium_automation_project.tests"/>
+        </packages>
+    </test>
+</suite>

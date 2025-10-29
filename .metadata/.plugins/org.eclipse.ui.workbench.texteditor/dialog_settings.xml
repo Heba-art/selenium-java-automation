@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<section name="java.lang.Class">
+		<list key="findhistory">
+			<item value="presenceOfElementLocated"/>
+			<item value="click"/>
+			<item value="io.qameta.allure"/>
+			<item value="opencart"/>
+			<item value="addToCartByName"/>
+		</list>
+	</section>
+</section>

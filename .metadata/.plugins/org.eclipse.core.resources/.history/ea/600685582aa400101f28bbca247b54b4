@@ -1,0 +1,25 @@
+@echo off
+setlocal ENABLEEXTENSIONS
+
+rem --- 1. Define folder variables
+set "RES=target\allure-results"
+set "REP=target\allure-report"
+
+echo Running Maven tests...
+rem --- 2. Run the Maven tests
+call mvn -q test
+
+rem --- 3. Copy history from the previous report
+if exist "%REP%\history" (
+    xcopy /E /I /Y "%REP%\history" "%RES%\history" >nul
+)
+
+echo Generating Allure report...
+rem --- 4. Generate the new Allure report (THE FIX IS HERE)
+call allure generate "%RES%" -o "%REP%" --clean
+
+echo Opening report in browser...
+rem --- 5. Open the report in the browser
+start "" "%REP%\index.html"
+
+endlocal

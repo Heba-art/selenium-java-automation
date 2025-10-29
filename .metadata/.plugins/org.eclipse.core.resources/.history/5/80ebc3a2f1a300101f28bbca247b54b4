@@ -1,0 +1,5 @@
+package com.mycompany.selenium_automation_project.tests;
+
+public class SauceDemoCheckoutTotalsTest {
+
+}

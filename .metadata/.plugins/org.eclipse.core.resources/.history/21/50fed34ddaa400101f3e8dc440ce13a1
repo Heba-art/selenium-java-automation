@@ -1,0 +1,112 @@
+
+package com.mycompany.selenium_automation_project;
+
+
+import java.util.List;
+import java.util.NoSuchElementException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.mycompany.selenium_automation_project.base.BasePage;
+
+public class CartPage extends BasePage {
+
+	
+	private final By title= By.className("title"); // "Your Cart"
+
+	
+	private final By checkoutBtn = By.id("checkout");
+	private final By continueShoppingBtn = By.id("continue-shopping");
+	
+	public CartPage(WebDriver driver) {
+        super(driver);
+    }
+	
+	public void waitUntilLoaded() {
+        wait.until(ExpectedConditions.urlContains("/cart.html"));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(title, "Your Cart"));
+    }
+    public boolean isLoaded() {
+    	return driver.findElement(title).getText().trim().equalsIgnoreCase("Your Cart");	
+    }
+    
+ // The cart description that contains the desired product name
+    private By cartItemRowByName(String name) {
+        return By.xpath("//div[@class='cart_item' and .//div[@class='inventory_item_name' and normalize-space()='" + name + "']]");
+    }
+	
+    public boolean isProductInCart(String name) {
+        return !driver.findElements(cartItemRowByName(name)).isEmpty();
+    }
+ 
+    public void removeProductFromCart(String productName) {
+        // Locate the full cart row that contains the given product name
+        By rowLocator = cartItemRowByName(productName);
+
+        // 1) Wait for the product row to become visible
+        WebElement row = wait.until(ExpectedConditions.visibilityOfElementLocated(rowLocator));
+
+        // 2) Locate the "Remove" button within the same row (try multiple selectors)
+        WebElement removeBtn;
+        try {
+            removeBtn = row.findElement(By.cssSelector("button.cart_button"));
+        } catch (NoSuchElementException e) {
+            removeBtn = row.findElement(By.xpath(".//button[contains(@id,'remove') or contains(@data-test,'remove') or normalize-space()='Remove']"));
+        }
+
+        // 3) Scroll the button into view to avoid visibility issues in headless runs
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", removeBtn);
+
+        // 4) Click safely (use JS fallback if normal click fails)
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(removeBtn)).click();
+        } catch (ElementClickInterceptedException ex) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", removeBtn);
+        }
+
+        // 5) Wait for the product row to disappear or become stale
+        int before = driver.findElements(rowLocator).size();
+        wait.until(ExpectedConditions.or(
+                ExpectedConditions.stalenessOf(row),
+                ExpectedConditions.invisibilityOfElementLocated(rowLocator),
+                ExpectedConditions.numberOfElementsToBe(rowLocator, Math.max(0, before - 1))
+        ));
+
+        // 6) Optional: ensure the cart badge count decreases or disappears
+        try {
+            By badge = By.cssSelector(".shopping_cart_badge");
+            List<WebElement> badges = driver.findElements(badge);
+            if (!badges.isEmpty()) {
+                int beforeBadge = Integer.parseInt(badges.get(0).getText().trim());
+                wait.until(ExpectedConditions.or(
+                        ExpectedConditions.numberOfElementsToBe(badge, 0),
+                        ExpectedConditions.textToBePresentInElementLocated(badge, String.valueOf(Math.max(0, beforeBadge - 1)))
+                ));
+            }
+        } catch (Exception ignored) {
+            // Ignore if badge not present or parsing fails
+        }
+    }
+
+    public CheckoutPage clickCheckout() {
+    	wait.until(ExpectedConditions.elementToBeClickable(checkoutBtn)).click();
+    	CheckoutPage checkout = new CheckoutPage (driver, wait);
+    	checkout.waitUntilInfoLoaded();
+        return checkout;
+    }
+    public ProductsPage clickContinueShopping() {
+    wait.until(ExpectedConditions.elementToBeClickable(continueShoppingBtn)).click();
+    ProductsPage products = new ProductsPage(driver);
+    products.waitUntilLoaded();
+    return products;
+    }
+}
+
+ 
+

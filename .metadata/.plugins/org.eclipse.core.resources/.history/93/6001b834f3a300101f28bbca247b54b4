@@ -1,0 +1,54 @@
+package com.mycompany.selenium_automation_project.tests;
+
+import org.testng.annotations.Test;
+
+import com.mycompany.selenium_automation_project.CartPage;
+import com.mycompany.selenium_automation_project.CheckoutPage;
+import com.mycompany.selenium_automation_project.LoginPage;
+import com.mycompany.selenium_automation_project.ProductsPage;
+import com.mycompany.selenium_automation_project.base.BaseTest;
+
+import dev.failsafe.internal.util.Assert;
+
+public class SauceDemoCheckoutTotalsTest extends BaseTest {
+	
+
+	 @Test(description = "TC-SD-012: Verify totals & tax on Checkout Overview")
+	 public void TC_SD_012_verifyTotalsAndTaxOnOverview() throws InterruptedException { 
+		 // 1) Login
+		 LoginPage login = new LoginPage (driver);
+		 login.open(baseUrl);
+		 login.login("standard_user", "secret_sauce");
+		 
+		// 2) Add 2 products to cart: Backpack + Bike Light
+		 ProductsPage products= new ProductsPage(driver);
+		 products.waitUntilLoaded();
+		 products.addProductToCart("Sauce Labs Backpack");
+		 products.addProductToCart("Sauce Labs Bike Light");
+		 
+		  // 3) Open Cart and start Checkout
+		 CartPage cart = products.openCart();
+		 cart.isProductInCart("Sauce Labs Backpack");
+		 cart.isProductInCart("Sauce Labs Bike Light");
+		 cart.clickCheckout();
+		 Thread.sleep(10000);
+		 // 4) Fill checkout info
+		 CheckoutPage checkout = new CheckoutPage(driver, wait);
+		 checkout.fillInfo("Heba", "QA", "3000");
+		 Thread.sleep(10000);
+		// 5) Verify Overview page totals
+		 double itemTotal =checkout.getItemTotal();
+		 double tax = checkout.getTax();
+         double total = checkout.getTotal();
+         
+         // 6) Assert calculations (8% tax)
+         double expectedItemTotal = 29.99 + 9.99; // = 39.98
+         double expectedTax = Math.round(expectedItemTotal * 0.08 * 100.0) / 100.0; // 3.20
+         double expectedTotal = Math.round((expectedItemTotal + expectedTax) * 100.0) / 100.0; // 43.18
+		 
+         org.testng.Assert.assertEquals(itemTotal, expectedItemTotal, 0.001, "Item total mismatch!");
+         org.testng.Assert.assertEquals(tax,       expectedTax,       0.001, "Tax mismatch!");
+         org.testng.Assert.assertEquals(total,     expectedTotal,     0.001, "Overall total mismatch!");
+         Thread.sleep(10000);
+	 }
+}

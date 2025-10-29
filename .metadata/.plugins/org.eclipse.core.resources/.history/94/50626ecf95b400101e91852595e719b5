@@ -1,0 +1,124 @@
+package com.mycompany.selenium_automation_project;
+
+import java.util.NoSuchElementException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.netty.handler.timeout.TimeoutException;
+
+public class CheckoutPage {
+	private final WebDriver driver;
+	private final WebDriverWait wait;
+	// Step 1: Your Information
+	private final By title = By.className("title");
+	private final By firstName = By.id("first-name");
+	private final By lastName = By.id("last-name");
+	private final By postal = By.id("postal-code");
+	private final By continueBtn = By.id("continue");
+	 // Step 2: Overview
+	private final By finishBtn = By.id("finish");
+	// Step 3: Complete
+    private final By completeHeader = By.className("complete-header"); //"Thank you for your order!"
+    //TC 12
+    private By itemTotalLabel = By.cssSelector(".summary_subtotal_label");
+    private By taxLabel = By.cssSelector(".summary_tax_label");
+    private By totalLabel = By.cssSelector(".summary_total_label");
+	
+    public CheckoutPage (WebDriver driver, WebDriverWait wait) {
+    	 this.driver = driver;
+         this.wait = wait;	
+    }
+	
+    public void waitUntilInfoLoaded() {
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(title, "Checkout: Your Information"));
+    }
+
+    public void fillInfo(String f, String l, String z) {
+    	WebElement fName = wait.until(ExpectedConditions.visibilityOfElementLocated(firstName));
+        fName.clear();
+        fName.sendKeys(f);
+
+        WebElement lName = wait.until(ExpectedConditions.visibilityOfElementLocated(lastName));
+        lName.clear();
+        lName.sendKeys(l);
+
+        WebElement pCode = wait.until(ExpectedConditions.visibilityOfElementLocated(postal));
+        pCode.clear();
+        pCode.sendKeys(z);
+    }
+    public void clickContinue() {
+    	try {
+            // 1. ابحث عن أي عنصر داخل الفورم، مثل "firstName"
+            WebElement fName = wait.until(ExpectedConditions.visibilityOfElementLocated(firstName));
+            
+            // 2. قم بإرسال الفورم الأب (parent form) مباشرة
+            // هذا هو بديل .click()
+            fName.submit();
+            
+        } catch (Exception e) {
+            // 3. كخطة بديلة، حاول الضغط بالجافاسكريبت (الكود القديم)
+            System.out.println("Form .submit() failed, trying JS click as fallback. Error: " + e.getMessage());
+            WebElement cont = wait.until(ExpectedConditions.presenceOfElementLocated(continueBtn));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", cont);
+        }
+    }
+    public void waitUntilOverviewLoaded() {
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(title, "Checkout: Overview"));
+    }
+
+    public void finish() {
+        wait.until(ExpectedConditions.elementToBeClickable(finishBtn)).click();
+    }
+	
+	public void waitUntilCompleteLoaded() {
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(title, "Checkout: Complete!"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(completeHeader));
+    }
+	public boolean isComplete() {
+        try {
+            String t = driver.findElement(title).getText().trim();
+            return "Checkout: Complete!".equals(t)
+                   && driver.findElement(completeHeader).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+	// Click Continue without filling info 
+	public void clickContinueOnly(){
+		wait.until(ExpectedConditions.elementToBeClickable(continueBtn)).click();	
+	}
+	// Get inline error message shown under the title (data-test='error')
+	public String getErrorMessage() {
+	try {
+		By error = By.cssSelector("[data-test='error']");
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(error)).getText().trim();
+		}catch (NoSuchElementException | TimeoutException e) {
+	        return null;
+	    }
+	}
+	// Optional: clear all fields (useful when trying multiple variants)
+	public void clearInfoFields() {
+	    driver.findElement(firstName).clear();
+	    driver.findElement(lastName).clear();
+	    driver.findElement(postal).clear();
+	}
+	
+	public double getItemTotal() {
+		String text = driver.findElement(itemTotalLabel).getText().replace("Item total: $","").trim();	
+		 return Double.parseDouble(text);	
+	   }
+	public double getTax() {
+		 String text = driver.findElement(taxLabel).getText().replace("Tax: $", "").trim();
+		    return Double.parseDouble(text);
+		}
+
+		public double getTotal() {
+		    String text = driver.findElement(totalLabel).getText().replace("Total: $", "").trim();
+		    return Double.parseDouble(text);
+		}		
+}

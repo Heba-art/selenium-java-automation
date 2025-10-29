@@ -1,0 +1,45 @@
+package com.mycompany.selenium_automation_project.tests;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.mycompany.selenium_automation_project.LoginPage;
+import com.mycompany.selenium_automation_project.ProductsPage;
+import com.mycompany.selenium_automation_project.base.BaseTest;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
+public class SauceDemoSortByNameAToZTest extends BaseTest {
+
+	@Epic("SauceDemo Automation")
+	@Feature("Products")
+	@Story("Sort products alphabetically (A → Z)")
+	@Severity(SeverityLevel.NORMAL)
+	@Owner("Heba AL-Rubaye")
+	@Description("Verify that selecting 'Name (A to Z)' from the sort dropdown arranges all products alphabetically in ascending order.")
+	@Test(priority = 11)
+	
+	public void TC_SD_011_sortProductsByNameAToZ(){
+	 // 1) Login
+	 LoginPage login = new LoginPage(driver);
+	 login.open(baseUrl);
+	 login.login("standard_user", "secret_sauce");
+	 
+	 // 2) Open product details
+	 ProductsPage products = new ProductsPage(driver);
+	 products.waitUntilLoaded();
+     products.sortByNameAToZ();
+    
+     // Just check result
+     Assert.assertTrue(products.isSortedByNameAToZ(),"Products are NOT sorted correctly by Name (A→Z).");
+
+	}	
+}
