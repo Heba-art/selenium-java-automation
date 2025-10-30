@@ -1,1 +1,18 @@
-/target/
+# === Build & Reports ===
+target/
+allure-results/
+allure-report/
+.allure/
+
+# === IDEs & Editors ===
+.metadata/
+.settings/
+.classpath
+.project
+.idea/
+.vscode/
+bin/
+
+# === System Files ===
+.DS_Store
+Thumbs.db
