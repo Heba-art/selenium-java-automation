@@ -15,12 +15,11 @@
   </a>
 </p>
 
-[![Allure Report](https://img.shields.io/badge/Allure-Report-blueviolet)](https://heba-art.github.io/selenium-automation-project/)
+[![Allure Report](https://img.shields.io/badge/Allure-Report-blueviolet)](https://heba-art.github.io/selenium-java-automation/)
 
-🧪 [Live Allure Report](https://heba-art.github.io/selenium-automation-project/)
+🧪 [Live Allure Report](https://heba-art.github.io/selenium-java-automation/)
 
-📊 Last updated: ![last update](https://img.shields.io/github/last-commit/heba-art/selenium-automation-project?color=green)
-
+📅 Last updated: ![last commit](https://img.shields.io/github/last-commit/heba-art/selenium-java-automation?color=green)
 
 ![Profile Views](https://komarev.com/ghpvc/?username=heba-art&color=blue)
 ![GitHub Repo stars](https://img.shields.io/github/stars/heba-art/selenium-java-automation?style=social)
