@@ -1,27 +1,21 @@
 package com.mycompany.selenium_automation_project.base;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -30,128 +24,143 @@ import org.testng.annotations.BeforeSuite;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 
 public class BaseTest {
-	protected WebDriver driver;
+    protected WebDriver driver;
     protected WebDriverWait wait;
     protected String baseUrl;
 
     @BeforeMethod
     public void setUp() {
-        // 1. Setup WebDriverManager to automatically download the correct chromedriver
+        // 1. Automatically download and setup the correct ChromeDriver
         WebDriverManager.chromedriver().setup();
-        
-        // 2. Configure Chrome Options
+
+        // 2. Configure Chrome options
         ChromeOptions options = new ChromeOptions();
 
-        // --- Configure preferences to disable annoying popups (like "Save Password") ---
+        // --- Disable Chrome's built-in password and autofill popups ---
         Map<String, Object> prefs = new HashMap<>();
-        prefs.put("credentials_enable_service", false);              // Stop password service
-        prefs.put("profile.password_manager_enabled", false);        // Stop saving passwords
-        prefs.put("profile.password_manager_leak_detection", false); // Stop leak warnings
-        prefs.put("autofill.profile_enabled", false);                // stop Autofill profiles
-        prefs.put("autofill.credit_card_enabled", false);            // stop Autofill credit cards
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        prefs.put("profile.password_manager_leak_detection", false);
+        prefs.put("autofill.profile_enabled", false);
+        prefs.put("autofill.credit_card_enabled", false);
         options.setExperimentalOption("prefs", prefs);
 
-        // --- GitHub Actions (CI/CD) specific settings ---
-        options.addArguments("--headless=new"); // ✅ Always run Chrome in headless mode on GitHub Actions
-        options.addArguments("--no-sandbox"); // ✅ Prevent common GitHub container issues
-        options.addArguments("--disable-dev-shm-usage"); // ✅ Prevent common GitHub container issues
+        // --- Settings for GitHub Actions or headless CI environments ---
+        options.addArguments("--headless=new"); // Run Chrome in headless mode
+        options.addArguments("--no-sandbox"); // Prevent sandbox errors in CI
+        options.addArguments("--disable-dev-shm-usage"); // Avoid shared memory issues
 
-        // --- General stability and consistency settings ---
+        // --- General stability and consistency options ---
         options.addArguments("--disable-gpu");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-popup-blocking");
         options.addArguments("--window-size=1920,1080");
 
-        // --- Create a unique temporary user data directory each run ---
+        // --- Create a temporary user data directory for each run ---
         options.addArguments("--user-data-dir=/tmp/chrome-" + System.currentTimeMillis());
-        
-        // (Note: The second, redundant 'prefs' block was removed)
 
-        // 3. Create a WebDriver with options only (once!)
+        // 3. Create the WebDriver instance
         driver = new ChromeDriver(options);
-        driver.manage().deleteAllCookies(); // Start with a clean slate
+        driver.manage().deleteAllCookies(); // Ensure a clean browser session
 
-        // 4. Define the Base URL for the application
-        baseUrl = "https://www.saucedemo.com/"; // <-- This was the missing line
+        // 4. Define the base URL for the tests
+        baseUrl = "https://www.saucedemo.com/";
 
-        // 5. Initialize WebDriverWait with the DEFAULT_TIMEOUT
+        // 5. Create an explicit wait with a default timeout
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
-
+    // ==============================================
+    // 🧹 Tear Down (Runs After Each Test)
+    // ==============================================
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) {
-        // This method runs after every @Test
-        if (driver != null) {
-            try {
-                // Check if the test failed
-                if (result.getStatus() == ITestResult.FAILURE) {
-                    // Attach screenshot and URL to Allure report
-                    attachScreenshot("❌ Failure Screenshot");
-                    Allure.addAttachment("URL at Failure", driver.getCurrentUrl());
+        WebDriver d = driver;
+        if (d == null) return;
+
+        try {
+            // Check if the WebDriver session is still active
+            boolean sessionAlive = !(d instanceof RemoteWebDriver)
+                    || ((RemoteWebDriver) d).getSessionId() != null;
+
+            // Only take screenshots and attachments if the session is alive
+            if (sessionAlive && result.getStatus() == ITestResult.FAILURE) {
+                try {
+                    attachScreenshot("❌ Failure Screenshot", d);
+                } catch (WebDriverException ignored) {
+                    System.out.println("⚠️ Unable to capture screenshot: " + ignored.getMessage());
                 }
-            } finally {
-                // Always quit the driver to close the browser session
-                driver.quit();
+
+                try {
+                    Allure.addAttachment("URL at Failure", d.getCurrentUrl());
+                } catch (WebDriverException ignored) {
+                    System.out.println("⚠️ Unable to capture current URL: " + ignored.getMessage());
+                }
             }
+        } finally {
+            // Always attempt to close the browser gracefully
+            try {
+                d.quit();
+            } catch (WebDriverException ignored) {
+                System.out.println("⚠️ Browser already closed or session invalid.");
+            }
+            driver = null; // Avoid reusing a dead session
         }
     }
 
+    // ==============================================
+    // 📋 Environment Information for Allure
+    // ==============================================
     @BeforeSuite(alwaysRun = true)
     public void writeAllureEnvironment() throws Exception {
-        // This runs once before all tests to create the Allure environment file
         String dir = System.getProperty("allure.results.directory", "target/allure-results");
         Path resultsDir = Paths.get(dir);
 
-        // Create the allure-results directory if it doesn't exist
+        // Ensure the directory exists
         java.nio.file.Files.createDirectories(resultsDir);
-        
-        // Define properties for the Allure environment.properties file
+
+        // Define Allure environment details
         Properties p = new Properties();
         p.setProperty("Tester", "Heba AL-Rubaye");
         p.setProperty("Environment", "QA");
         p.setProperty("BaseURL", "https://www.saucedemo.com");
-        p.setProperty("Browser", "Chrome"); // More maintainable than a specific version
+        p.setProperty("Browser", "Chrome");
         p.setProperty("Execution Mode", "Headless");
         p.setProperty("Build", "GitHub Actions CI");
 
-        // Write the properties to the file
-        File envFile = resultsDir.resolve("environment.properties").toFile();
-        try (OutputStream out = new FileOutputStream(envFile)) {
+        // Write the environment.properties file
+        try (OutputStream out = new FileOutputStream(resultsDir.resolve("environment.properties").toFile())) {
             p.store(out, "Allure environment");
         }
     }
 
-    /**
-     * Attaches a screenshot to the Allure report.
-     * @param name The name for the attachment.
-     */
-    private void attachScreenshot(String name) {
-        byte[] png = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-        Allure.addAttachment(name, new ByteArrayInputStream(png));
+    // ==============================================
+    // 📸 Attach Screenshot to Allure Report
+    // ==============================================
+    @Attachment(value = "{name}", type = "image/png")
+    private byte[] attachScreenshot(String name, WebDriver d) {
+        try {
+            return ((TakesScreenshot) d).getScreenshotAs(OutputType.BYTES);
+        } catch (WebDriverException e) {
+            System.out.println("⚠️ Failed to take screenshot: " + e.getMessage());
+            return null;
+        }
     }
 
-    /**
-     * Getter for the WebDriver instance.
-     * @return the WebDriver instance
-     */
+    // ==============================================
+    // 🚗 Get Driver Instance
+    // ==============================================
     public WebDriver getDriver() {
         return driver;
     }
 
-    /**
-     * Static block to set the Allure results directory property when the class is loaded.
-     */
+    // ==============================================
+    // ⚙️ Static block for Allure path configuration
+    // ==============================================
     static {
         System.setProperty("allure.results.directory", "target/allure-results");
     }
-
-    /**
-     * A robust click method that retries on failure.
-     * It scrolls, waits for clickable, and uses a JS click fallback.
-     * This method should ideally be in BasePage so Page Objects can use it.
-     * @param locator The By locator of the element to click.
-     */
 }
