@@ -5,28 +5,28 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch: {}  # allows manual trigger from GitHub Actions UI
+  workflow_dispatch: {}  # manual run
 
 permissions:
-  contents: write
+  contents: write  # required by actions-gh-pages to push to gh-pages
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout your project repository
+      # 1) Checkout the repository (main branch)
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Setup Java environment
+      # 2) Set up JDK 17
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      # Cache Maven dependencies for faster builds
+      # 3) Cache Maven dependencies for faster builds
       - name: Cache Maven packages
         uses: actions/cache@v4
         with:
@@ -35,20 +35,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Install Google Chrome for Selenium
+      # 4) Install Chrome (used by Selenium in headless mode)
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
 
-      # Optional: check installed Chrome version
+      # 5) Optional: show Chrome version for diagnostics
       - name: Check Chrome version
         run: chrome --version
 
-      # Run Maven tests (continue even if some tests fail)
+      # 6) Run tests (continue-on-error ensures report is still generated)
       - name: Run tests
         run: mvn -B clean test
         continue-on-error: true
 
-      # Debug: list contents of target folder to verify Allure results exist
+      # 7) Debug: list target and allure-results to confirm outputs exist
       - name: Debug list target
         if: always()
         run: |
@@ -57,27 +57,27 @@ jobs:
           echo "--- allure-results content ---"
           ls -la target/allure-results || true
 
-      # Retrieve previous Allure history (for trend data)
+      # 8) Load existing Allure history from gh-pages (for trends)
       - name: Load Allure history
         if: always()
         uses: actions/checkout@v4
         with:
-          ref: gh-pages
-          path: gh-pages
-        continue-on-error: true
+          ref: gh-pages            # checkout the gh-pages branch
+          path: gh-pages           # into a separate folder
+        continue-on-error: true    # first run may not have gh-pages yet
 
-      # Generate the Allure HTML report
+      # 9) Generate Allure report (simple-elf action outputs to allure-history/)
       - name: Generate Allure report
         if: always()
         uses: simple-elf/allure-report-action@v1.13
         with:
-          gh_pages: gh-pages
-          allure_history: allure-history
+          gh_pages: gh-pages        # previously checked out history (input)
+          allure_history: allure-history  # output folder with final static site
           allure_results: target/allure-results
 
-      # Deploy the report to GitHub Pages
+      # 10) Deploy the report to gh-pages (skip on pull_request to avoid publishing)
       - name: Deploy report to gh-pages
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
