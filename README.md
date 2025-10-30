@@ -15,11 +15,7 @@
   </a>
 </p>
 
-[![Allure Report](https://img.shields.io/badge/Allure-Report-blueviolet)](https://heba-art.github.io/selenium-java-automation/)
-
 🧪 [Live Allure Report](https://heba-art.github.io/selenium-java-automation/)
-
-📅 Last updated: ![last commit](https://img.shields.io/github/last-commit/heba-art/selenium-java-automation?color=green)
 
 ![Profile Views](https://komarev.com/ghpvc/?username=heba-art&color=blue)
 ![GitHub Repo stars](https://img.shields.io/github/stars/heba-art/selenium-java-automation?style=social)
@@ -160,6 +156,17 @@ runs your TestNG tests
 preserves Allure history for trend graphs
 
 opens the report in your browser
+
+### 🌍 Live Allure Report
+You can view the latest test execution report here:  
+👉 **[Live Allure Report](https://heba-art.github.io/selenium-java-automation/)**  
+
+Each new push to the `main` branch triggers the pipeline automatically:
+1. Runs Selenium tests headlessly via Chrome.
+2. Generates Allure results (`target/allure-results`).
+3. Creates historical reports.
+4. Publishes them live to GitHub Pages (branch `gh-pages`).
+
 ## 🔗 Connect with Me
 
 This project is a key part of my growth as a **Test Automation Engineer**. Follow my progress and connect with me!
